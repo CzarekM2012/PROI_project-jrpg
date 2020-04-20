@@ -1,0 +1,25 @@
+#ifndef MAINMENU_H
+#define MAINMENU_H
+
+#include <QMainWindow>
+#include <QPushButton>
+#include <QHBoxLayout>
+class MainMenu : public QMainWindow
+{
+    Q_OBJECT
+
+    public:
+        MainMenu(QWidget *parent);
+        ~MainMenu();
+
+    private slots:
+        void start_new_game();
+        void load_game();
+        void options();
+        void exit();
+    
+    private:
+        QBoxLayout* layout;
+        QPushButton* new_game_, load_game_, options_, exit_;
+};
+#endif // MAINMENU_H
