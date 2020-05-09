@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/main_menu-button_graphic.png</file>
+        <file>images/main_menu-background_graphic.png</file>
+        <file>images/character1.png</file>
+        <file>images/character2.png</file>
+        <file>images/character3.png</file>
+        <file>images/character4.png</file>
+        <file>images/slime.png</file>
+        <file>images/spider.png</file>
+        <file>images/unspecified_humanoid.png</file>
+    </qresource>
+</RCC>
