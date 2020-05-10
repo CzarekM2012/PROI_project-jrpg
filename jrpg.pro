@@ -24,7 +24,6 @@ SOURCES += \
     enemy_group.cpp \
     enemy_group_view.cpp \
     entity.cpp \
-    group_of_characters.cpp \
     group_status_panel.cpp \
     group_view.cpp \
     main.cpp \
@@ -46,7 +45,6 @@ HEADERS += \
     enemy_group.h \
     enemy_group_view.h \
     entity.h \
-    group_of_characters.h \
     group_status_panel.h \
     group_view.h \
     mainmenu.h \
