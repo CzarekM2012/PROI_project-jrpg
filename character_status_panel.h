@@ -12,7 +12,6 @@ class character_status_panel: public QFrame
 public:
     character_status_panel();
     void paste_data(character *character);
-    void set_current_stat_over_max_stat_text(QLabel *label, int nominator, int denominator);
     QProgressBar *get_action_bar_();
 
 private slots:
