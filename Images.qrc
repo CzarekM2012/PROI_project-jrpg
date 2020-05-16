@@ -1,6 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>images/path.png</file>
+        <file>images/lake1.png</file>
+        <file>images/living_room.png</file>
+        <file>images/mountains.png</file>
+        <file>images/ruins1.png</file>
+        <file>images/ruins2.png</file>
+        <file>images/castle.png</file>
+        <file>images/sand_forest.png</file>
+        <file>images/sand_forest1.png</file>
         <file>images/face1.png</file>
         <file>images/face2.png</file>
         <file>images/face3.png</file>
