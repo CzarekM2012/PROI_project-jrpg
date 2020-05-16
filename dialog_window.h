@@ -2,6 +2,7 @@
 #define DIALOG_WINDOW_H
 
 #include <QWidget>
+#include "bglabel.h"
 
 class QLabel;
 class QPushButton;
@@ -10,13 +11,11 @@ class dialog_window : public QWidget
   Q_OBJECT
 public:
   explicit dialog_window(QWidget *parent = nullptr);
+  BgLabel *background;
+  void dialog_window::check_state();
 
-private:
-  QLabel *background;
-  QLabel *dialog;
-  QLabel *text_bg;
-  QLabel *face;
-  QPushButton *next;
+//private:
+
 
 };
 
