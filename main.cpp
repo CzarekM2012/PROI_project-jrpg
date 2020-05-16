@@ -7,6 +7,7 @@ int main(int argc, char **argv)
 
  dialog_window d_window;
  d_window.show();
-
  return app.exec();
+
+ d_window.check_state();
 }
