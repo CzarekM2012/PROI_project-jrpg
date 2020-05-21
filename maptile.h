@@ -17,6 +17,7 @@ public:
   bool walkable;
   QPixmap tile_pic_pix;
   QLabel *tile_pic;
+  int dialog_event;
 
   MapTile *up_neigh;
   MapTile *down_neigh;
