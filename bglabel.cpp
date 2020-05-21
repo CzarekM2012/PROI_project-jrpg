@@ -13,7 +13,7 @@ BgLabel::BgLabel(int part, QWidget *parent) : QWidget(parent)
 
   QPixmap bg(bg_pic);
   background = new QLabel(this);
-  background->setGeometry(30, 30, 1300, 650);
+  background->setGeometry(10, 10, 1300, 650);
   bg = bg.scaled(1300, 650);
   background->setPixmap(bg);
 
@@ -48,7 +48,7 @@ BgLabel::BgLabel(int part, QWidget *parent) : QWidget(parent)
 
 void BgLabel::setSteps(int part)
 {
-  int dsteps[] = {5, 4};
+  int dsteps[] = {5, 4, 4};
   steps = dsteps[part];
   return;
 }
@@ -65,7 +65,8 @@ QString BgLabel::choose_bg(int part)
 std::vector<QString> BgLabel::choose_face_set(int part)
 {
   std::vector<std::vector<QString>> faces_sets = {{":/images/face5.png", ":/images/face2.png", ":/images/face1.png", ":/images/face4.png", ":/images/face6.png"},
-                                               {":/images/face6.png", ":/images/face1.png", ":/images/face3.png", ":/images/face2.png"}};
+                                               {":/images/face6.png", ":/images/face1.png", ":/images/face3.png", ":/images/face2.png"},
+                                                  {":/images/face5.png", ":/images/face4.png", ":/images/face3.png", ":/images/face2.png"}};
   return faces_sets[part];
 
 }
@@ -74,8 +75,10 @@ std::vector<QString> BgLabel::choose_texts(int part)
 {
   std::vector<std::vector<QString>> texts_sets = {{"Lena:\nBardzo ładny dzień dzisiaj mamy, a tak poza tym\nto ten pokój jest całkiem przytulny,\nmożemy kiedyś zrobić noc filmową!",
                                                    "Sara:\nMoże pójdziemy na spacer? Jest\nbardzo ładna pogoda.", "Oskar:\nNo dobra", "Jacek:\nTo ja wezmę wędkę!", "Alek:\nO nie, tylko nie wychodzenie na dwór!"},
-                                                  {"Alek:\nZieloność, fuj.", "Oskar:\nPrzypomnijcie, dlaczego go w ogóle\nzabraliśmy ze sobą na ten wyjazd?",
-                                                   "Tina:\nBo nie mógł z nami pojechać Angus.\nLena była z tego powodu bardzo zawiedziona.", "Sara:\nWłaśnie, gdzie jest Lena?"}};
+                                                  {"Alek:\nDaleko jeszczeee? Nogi zaczynają\nmnie boleć!", "Oskar:\nPrzypomnijcie, dlaczego w ogóle\nzabraliśmy go ze sobą na tę wyprawę?",
+                                                   "Tina:\nBo ma dużą wiedzę o potworach z gier.\nLena uznała, że to nam się przyda.", "Sara:\nWłaśnie, gdzie jest Lena?"},
+                                                   {"Lena:\nPiękny widok na jezioro!", "Jacek:\nMoże zatrzymamy się, żeby złapać\njakiegoś leszczyka?",
+                                                    "Tina:\nNie mamy teraz czasu, musimy iść dalej\nżeby odkryć, dlaczego wioskę atakują\nkolorowe gluty.", "Sara:\nWrócimy tu później, Jacku."}};
   return texts_sets[part];
 
 }
