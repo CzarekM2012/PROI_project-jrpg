@@ -10,13 +10,15 @@ SOURCES += \
     dialog_window.cpp \
     main.cpp \
     maplabel.cpp \
-    maptile.cpp
+    maptile.cpp \
+    playeronmap.cpp
 
 HEADERS += \
     bglabel.h \
     dialog_window.h \
     maplabel.h \
-    maptile.h
+    maptile.h \
+    playeronmap.h
 
 FORMS +=
 
