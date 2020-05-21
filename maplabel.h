@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <vector>
 
+class BgLabel;
+class PlayerOnMap;
 class MapTile;
 class QPushButton;
 class MapLabel : public QWidget
@@ -17,6 +19,14 @@ public:
   QPushButton *down;
   QPushButton *left;
   QPushButton *right;
+  PlayerOnMap *player;
+  BgLabel *curr_event;
+
+private slots:
+ void slotButtonUp();
+ void slotButtonDown();
+ void slotButtonLeft();
+ void slotButtonRight();
 
 private:
   void init_tiles(int tileset);
