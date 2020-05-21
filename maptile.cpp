@@ -7,8 +7,8 @@ MapTile::MapTile(int x, int y, QString pix, QWidget *parent, bool walk, bool eve
 {
   coord_x = x;
   coord_y = y;
-  tile_w = 100;
-  tile_h = 100;
+  tile_w = 80;
+  tile_h = 80;
   this->setGeometry(coord_x, coord_y, tile_w, tile_h);
   has_event = event;
   walkable = walk;
@@ -16,7 +16,7 @@ MapTile::MapTile(int x, int y, QString pix, QWidget *parent, bool walk, bool eve
   tile_pic_pix = tile_pic_pix.scaled(tile_w, tile_h);
   tile_pic = new QLabel(this);
   tile_pic->setPixmap(tile_pic_pix);
-  tile_pic->setFrameStyle(1);
+  tile_pic->setFrameStyle(0);
 
   up_neigh = nullptr;
   down_neigh = nullptr;
