@@ -1,41 +1,28 @@
 #include "pc.h"
 
-pc::pc():character()
+pc::pc():character(){}
+
+pc::pc(const char *name, const char *description, unsigned int *stats_array, equipment **gear_array):character(name, description, stats_array)
 {
+    for(int i=0; i<7; i++)
+    {
+        equipment_[i] = gear_array[i];// gear stat changes already in stats_array
+    }
 }
 
-pc::pc(const char *name, const char *graphic_file_name, int *stats_array):character(name, graphic_file_name, stats_array){}
-
-pc::pc(character *character)
+pc::pc(character *copied_character):character(copied_character)
 {
-    set_name(*character->get_name());
-    set_graphic_dir(*character->get_graphic_dir());
-    int stats[9];
-    character->get_stats(stats);
-    set_stats(stats);
-    set_alive(character->alive());
-    delete character;
+    delete copied_character;
 }
 
-pc::pc(pc *pc)
+pc::pc(pc *pc):character(pc)
 {
-    set_name(*pc->get_name());
-    set_graphic_dir(*pc->get_graphic_dir());
-    int stats[9];
-    pc->get_stats(stats);
-    set_stats(stats);
-    set_alive(pc->alive());
-    std::pair<int,int> pos = pc->get_position();
-    set_position(pos.first, pos.second);
+    for(int i=0; i<7; i++){equipment_[i] = pc->equipment_[i];}
 }
 
-pc::pc(npc *npc)
+pc::pc(npc *npc):character(npc)
 {
-    set_name(*npc->get_name());
-    set_graphic_dir(*npc->get_graphic_dir());
-    int stats[9];
-    npc->get_stats(stats);
-    set_stats(stats);
-    set_alive(npc->alive());
     delete npc;
 }
+
+equipment *pc::get_part_of_ecquipment(int identifier){return equipment_[identifier];}
