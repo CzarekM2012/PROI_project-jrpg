@@ -1,15 +1,6 @@
 #include "enemy_group.h"
 
-enemy_group::enemy_group()
-{
-    for(int r=0; r<2; r++)
-    {
-        for(int p=0; p<2; p++)
-        {
-            formation_[r][p] = npc();
-        }
-    }
-}
+enemy_group::enemy_group(){}
 
 enemy_group::enemy_group(npc *npcs)
 {
