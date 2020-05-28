@@ -5,7 +5,7 @@
 class enemy_group_view: public group_view
 {
 public:
-    enemy_group_view(), enemy_group_view(enemy_group *enemy_group);
+    enemy_group_view(switchable_frame *, enemy_group *enemy_group);
 private:
 };
 
