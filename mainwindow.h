@@ -14,8 +14,7 @@ public:
 private slots:
     void battle();
 private:
-    long long int current_widget;
-    void switch_frames(QWidget *new_frame);
+    void switch_frames(switchable_frame *new_frame);
 };
 
 #endif // MAINWINDOW_H
