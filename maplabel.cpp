@@ -29,10 +29,10 @@ MapLabel::MapLabel(int tileset, QWidget *parent) : QWidget(parent)
 
   curr_event = nullptr;
 
-  tiles[51]->has_event = true;
-  tiles[51]->dialog_event = 1;
-  tiles[57]->has_event = true;
-  tiles[57]->dialog_event = 2;
+//  tiles[51]->has_event = true;
+//  tiles[51]->dialog_event = 1;
+//  tiles[57]->has_event = true;
+//  tiles[57]->dialog_event = 2;
 
 }
 
@@ -42,8 +42,10 @@ void MapLabel::init_tiles(int tileset)
   QString tf = ":/images/";
   std::vector<QString> all_tiles = {":/images/grass_bg.png", ":/images/trees_bg.png", ":/images/path_dirt_bg.png",
                                     ":/images/stone_bg.png", ":/images/water_corner_bg.png", ":/images/water_edge_bg.png",
-                                    ":/images/water_edge_vert_bg.png",};
-  bool walkable[7] = {true, false, true, true, false, false, false};
+                                    ":/images/water_edge_vert_bg.png", ":/images/sand1_bg.png", ":/images/sand2_bg.png",
+                                   ":/images/bush_bg.png", ":/images/cactus_bg.png", ":/images/oasis_bg.png",
+                                   ":/images/rock_bg.png", ":/images/rock_hand_bg.png", ":/images/rock_2hands_bg.png"};
+  bool walkable[15] = {true, false, true, true, false, false, false, true, true, false, true, true, false, false, false};
   int tileset0[70] = {1, 1, 1, 2, 1, 0, 1, 1, 1, 1,
                       1, 1, 0, 2, 0, 0, 0, 1, 1, 1,
                       1, 0, 0, 2, 0, 0, 1, 0, 1, 0,
@@ -51,6 +53,13 @@ void MapLabel::init_tiles(int tileset)
                       0, 0, 2, 0, 1, 1, 0, 3, 0, 0,
                       0, 2, 2, 0, 1, 0, 0, 0, 0, 1,
                       0, 2, 0, 3, 0, 0, 4, 6, 6, 6};
+  int tileset1[70] = {7, 10, 7, 7, 7, 7, 7, 7, 9, 9,
+                      7, 7, 8, 7, 11, 8, 7, 8, 7, 9,
+                      9, 9, 7, 7, 7, 7, 9, 7, 7, 7,
+                      9, 13, 9, 7, 7, 9, 9, 7, 10, 8,
+                      9, 7, 7, 8, 7, 9, 14, 7, 7, 7,
+                      7, 7, 10, 7, 7, 7, 9, 9, 7, 7,
+                      7, 8, 7, 7, 9, 9, 9, 9, 9, 7};
 
 if(tileset == 0)
   {
