@@ -1,5 +1,5 @@
 #include "character_status_panel.h"
-#include "data_processing.cpp"
+
 
 character_status_panel::character_status_panel()
 {
@@ -22,18 +22,20 @@ character_status_panel::character_status_panel()
 }
 void character_status_panel::paste_data(character *character)
 {
-    // int/int to char array custom function(start from max_stat to speed up the process;
-    name_->setText(*character->get_name());
-    char *text1 = new char[12], *text2 = new char[12];
-    int temp = character->get_current_hp();
-    int_to_char_array(temp, text1);
-    int_to_char_array(character->get_max_hp(), text2);
-    hp_->setText(QString(text1) + QString("/") + QString(text2));
-    int_to_char_array(character->get_current_sp(), text1);
-    int_to_char_array(character->get_max_sp(), text2);
-    sp_->setText(QString(text1) + QString("/") + QString(text2));
-    delete [] text1;
-    delete [] text2;
+    if(character->get_max_hp()>0)
+    {
+        name_->setText(character->get_name());
+        char *text1 = new char[12], *text2 = new char[12];
+        int temp = character->get_current_hp();
+        int_to_char_array(temp, text1);
+        int_to_char_array(character->get_max_hp(), text2);
+        hp_->setText(QString(text1) + QString("/") + QString(text2));
+        int_to_char_array(character->get_current_sp(), text1);
+        int_to_char_array(character->get_max_sp(), text2);
+        sp_->setText(QString(text1) + QString("/") + QString(text2));
+        delete [] text1;
+        delete [] text2;
+    }
 }
 
 QProgressBar *character_status_panel::get_action_bar_(){return action_;}
