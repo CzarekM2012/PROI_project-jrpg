@@ -6,6 +6,7 @@
 #include <QGridLayout>
 #include "pc.h"
 #include "npc.h"
+#include "data_processing.h"
 class character_status_panel: public QFrame
 {
     Q_OBJECT
