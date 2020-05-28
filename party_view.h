@@ -5,7 +5,7 @@
 class party_view: public group_view
 {
 public:
-    party_view(), party_view(party *party);
+    party_view(switchable_frame *, party *);
 private:
 };
 
