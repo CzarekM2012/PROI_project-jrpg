@@ -2,4 +2,5 @@
 
 npc::npc():character(){}
 
-npc::npc(const char *name, const char *graphic_file_name, int *stats_array):character(name, graphic_file_name, stats_array){}
+npc::npc(const char *name, const char *description, unsigned int *stats_array):character(name, description, stats_array){}
+
