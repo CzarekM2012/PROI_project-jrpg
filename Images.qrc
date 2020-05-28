@@ -22,5 +22,13 @@
         <file>images/water_corner_bg.png</file>
         <file>images/water_edge_bg.png</file>
         <file>images/water_edge_vert_bg.png</file>
+        <file>images/bush_bg.png</file>
+        <file>images/cactus_bg.png</file>
+        <file>images/oasis_bg.png</file>
+        <file>images/rock_bg.png</file>
+        <file>images/rock_hand_bg.png</file>
+        <file>images/rock_2hands_bg.png</file>
+        <file>images/sand1_bg.png</file>
+        <file>images/sand2_bg.png</file>
     </qresource>
 </RCC>
