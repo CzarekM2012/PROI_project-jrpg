@@ -1,31 +1,26 @@
 #ifndef CHARACTER_FRAME_H
 #define CHARACTER_FRAME_H
-#include <QFrame>
-#include <QKeyEvent>
-#include <QMouseEvent>
-#include <character.h>
-class character_frame : public QFrame
+#include "target_frame.h"
+#include <QPainter>
+
+class character_frame : public target_frame
 {
     Q_OBJECT
 public:
-    character_frame(), character_frame(character *represented_character);
-    void set_targeting(bool value);
-    void set_represented_character(character *character);
-    void set_compound_style_sheet(QVector<QString> array_of_traits);
-    std::pair<short int, short int> get_position();
+    character_frame(), character_frame(character *, short initial_state=1);
+    void set_state(short value);
+    void update(short target_state);
+    void forced_update(short target_state);
+    short state();
 protected:
-    //void keyPressEvent(QKeyEvent *);
-    //void keyReleaseEvent(QKeyEvent *);
-    void enterEvent(QEvent *) override;
-    void leaveEvent(QEvent *) override;
     void mousePressEvent(QMouseEvent *event) override;
-signals:
-    void hover_in();
-    void hover_out();
-    void target_acquired(character *);
+    void paintEvent(QPaintEvent *) override;
+private slots:
+    void is_target(entity *);
 private:
-    character *represented_character_;
-    bool targeting_;
+    short state_;
+    //shutdown, passive, acting, self_targeting, attack_target, support_target,
+    //active,  acting-potential_target, attack_potential_target, support_potential_target
 };
-#include <QPushButton>
+
 #endif // CHARACTER_FRAME_H
