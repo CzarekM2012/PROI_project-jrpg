@@ -1,7 +1,7 @@
 #include "mainmenu.h"
 #include "battleinterface.h"
 
-MainMenu::MainMenu():switchable_frame()
+MainMenu::MainMenu(QObject *parent):switchable_frame()
 {
     new_game_ = new QPushButton("New Game");
     load_game_ = new QPushButton("Load Game");
@@ -14,22 +14,23 @@ MainMenu::MainMenu():switchable_frame()
     load_game_->setMinimumSize(button_size);
     options_->setMinimumSize(button_size);
     exit_->setMinimumSize(button_size);
-    set_margins(0,0,200,0);
+    layout_->setContentsMargins(0,0,200,0);
     //set_vSpacing(50);
-    add_widget(new_game_, 0, 5, Qt::AlignRight);
-    add_widget(load_game_, 1, 5, Qt::AlignRight);
-    add_widget(options_, 2, 5, Qt::AlignRight);
-    add_widget(exit_, 3, 5, Qt::AlignRight);
-    set_stylesheet("QFrame{border-image:url(:/images/main_menu-background_graphic.png)}"
-                   "QPushButton{border-image:url(:/images/main_menu-button_graphic.png)}");
+    layout_->addWidget(new_game_, 0, 5, Qt::AlignRight);
+    layout_->addWidget(load_game_, 1, 5, Qt::AlignRight);
+    layout_->addWidget(options_, 2, 5, Qt::AlignRight);
+    layout_->addWidget(exit_, 3, 5, Qt::AlignRight);
+    setStyleSheet("QFrame{border-image:url(:/images/main_menu-background_graphic.png)}"
+                  "QPushButton{border-image:url(:/images/main_menu-button_graphic.png)}");
+    connect_buttons(parent);
 }
 
-void MainMenu::connect_buttons()
+void MainMenu::connect_buttons(QObject *parent)
 {
-    connect(new_game_, SIGNAL(clicked()), parent(), SLOT(battle()));
+    connect(new_game_, SIGNAL(clicked()), parent, SLOT(battle()));
     connect(load_game_, SIGNAL(clicked()), this, SLOT(load_game()));
     connect(options_, SIGNAL(clicked()), this, SLOT(options()));
-    connect(exit_, SIGNAL(clicked()), parent(), SLOT(close()));
+    connect(exit_, SIGNAL(clicked()), parent, SLOT(close()));
 }
 
 //QFrame *MainMenu::get_frame_address(){return background_;}
