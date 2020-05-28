@@ -8,7 +8,7 @@ public:
     enemy_group(), enemy_group(npc *npcs);
     npc *get_npc_adress(short int r, short int p);
 private:
-    npc formation_[2][2];
+    npc formation_[2][2]={};
 };
 
 #endif // ENEMY_GROUP_H
