@@ -12,6 +12,7 @@ group_status_panel::group_status_panel()
             layout_->addWidget(formation_[r][p],r,p);
         }
     }
+    setStyleSheet("QFrame{border-color:black; border-width:2px; border-style:inset}");
 }
 group_status_panel::group_status_panel(party *party):group_status_panel(){paste_data(party);}
 group_status_panel::group_status_panel(enemy_group *enemy_group):group_status_panel(){paste_data(enemy_group);}
@@ -23,10 +24,7 @@ void group_status_panel::paste_data(party *party)
         for (int p=0; p<2; p++)
         {
             pc *pc_to_paste_stats = party->get_pc_address(r, p);
-            if(pc_to_paste_stats->alive())
-            {
-                formation_[r][p]->paste_data(pc_to_paste_stats);
-            }
+            formation_[r][p]->paste_data(pc_to_paste_stats);
         }
     }
 }
