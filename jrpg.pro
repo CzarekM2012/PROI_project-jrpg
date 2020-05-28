@@ -21,20 +21,34 @@ SOURCES += \
     character.cpp \
     character_frame.cpp \
     character_status_panel.cpp \
+    consumable.cpp \
+    data_processing.cpp \
     enemy_group.cpp \
     enemy_group_view.cpp \
     entity.cpp \
+    equipment.cpp \
+    equipment_management_interface.cpp \
+    full_stats_display.cpp \
     group_status_panel.cpp \
     group_view.cpp \
+    item.cpp \
+    item_frame.cpp \
+    item_storage.cpp \
+    items_display.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
     npc.cpp \
     party.cpp \
+    party_display.cpp \
     party_view.cpp \
     pc.cpp \
+    pc_choice_panel.cpp \
+    pc_ecquipment_display.cpp \
     skill.cpp \
-    switchable_frame.cpp
+    status_effect.cpp \
+    switchable_frame.cpp \
+    target_frame.cpp
 
 HEADERS += \
     action.h \
@@ -42,19 +56,33 @@ HEADERS += \
     character.h \
     character_frame.h \
     character_status_panel.h \
+    consumable.h \
+    data_processing.h \
     enemy_group.h \
     enemy_group_view.h \
     entity.h \
+    equipment.h \
+    equipment_management_interface.h \
+    full_stats_display.h \
     group_status_panel.h \
     group_view.h \
+    item.h \
+    item_frame.h \
+    item_storage.h \
+    items_display.h \
     mainmenu.h \
     mainwindow.h \
     npc.h \
     party.h \
+    party_display.h \
     party_view.h \
     pc.h \
+    pc_choice_panel.h \
+    pc_ecquipment_display.h \
     skill.h \
-    switchable_frame.h
+    status_effect.h \
+    switchable_frame.h \
+    target_frame.h
 
 FORMS +=
 
