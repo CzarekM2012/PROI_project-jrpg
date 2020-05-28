@@ -1,15 +1,7 @@
 #include "party.h"
 
-party::party()
-{
-    for(int r=0; r<3; r++)
-    {
-        for (int p=0; p<2; p++)
-        {
-            formation_[r][p] = pc();
-        }
-    }
-}
+party::party(){item_storage_ = new item_storage;}
+
 party::party(pc *pcs)
 {
     int i=0;
@@ -36,6 +28,7 @@ party::party(party *party_to_copy)
             formation_[r][p] = pc(pc_to_copy);
         }
     }
+    item_storage_ = new item_storage(party_to_copy->item_storage_);
 }
 
 
@@ -71,3 +64,7 @@ void party::swap_members(pc *first_member, pc *second_member)
     first_member->set_position(pos2.first, pos2.second);
     second_member->set_position(pos1.first, pos1.second);
 }
+
+item_storage *party::get_item_storage(){return item_storage_;}
+
+void party::rewrite_from_pcs_and_delete_copies(){}
