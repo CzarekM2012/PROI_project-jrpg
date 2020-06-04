@@ -41,5 +41,12 @@
         <file>images/sand2_bg.png</file>
         <file>images/house_bg.png</file>
         <file>images/water_bg.png</file>
+        <file>images/rock_floor1_bg.png</file>
+        <file>images/rock_floor_bg.png</file>
+        <file>images/wall_left_end_bg.png</file>
+        <file>images/wall_bg.png</file>
+        <file>images/wall_right_end_bg.png</file>
+        <file>images/fountain_bg.png</file>
+        <file>images/chest_bg.png</file>
     </qresource>
 </RCC>
