@@ -35,9 +35,12 @@ void tiles_storage::init_tiles(int tileset)
   std::vector<tile_descriptor> all_tiles = {{":/images/grass_bg.png"}, {":/images/trees_bg.png", false}, {":/images/path_dirt_bg.png"},
                                             {":/images/stone_bg.png"}, {":/images/water_bg.png", false}, {":/images/water_corner_bg.png", false}, {":/images/water_edge_bg.png", false},
                                             {":/images/water_edge_vert_bg.png", false}, {":/images/house_bg.png"}, {":/images/sand1_bg.png"}, {":/images/sand2_bg.png"},
-                                            {":/images/bush_bg.png", false}, {":/images/cactus_bg.png"}, {":/images/oasis_bg.png"},
+                                            {":/images/bush_bg.png", false}, {":/images/cactus_bg.png", false}, {":/images/oasis_bg.png"},
                                             {":/images/rock_bg.png", false}, {":/images/rock_hand_bg.png", false}, {":/images/rock_2hands_bg.png", false},
-                                            {":/images/path_dirt_bg.png", true, true, 1}, {":/images/sand2_bg.png", true, true, 0}};
+                                            {":/images/path_dirt_bg.png", true, true, 1}, {":/images/sand2_bg.png", true, true, 0}, {":/images/sand1_bg.png", true, true, 2},
+                                            {":/images/rock_floor1_bg.png"}, {":/images/rock_floor_bg.png"}, {":/images/chest_bg.png"}, {":/images/fountain_bg.png", false},
+                                            {":/images/wall_left_end_bg.png", false}, {":/images/wall_bg.png", false}, {":/images/wall_right_end_bg.png", false},
+                                            {":/images/rock_floor_bg.png", true, true, 1}};
 
    int tileset0[70];
 if(tileset == 0)
