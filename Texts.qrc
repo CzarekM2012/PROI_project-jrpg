@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>texts/test.txt</file>
+        <file>texts/map0.txt</file>
+    </qresource>
+</RCC>
