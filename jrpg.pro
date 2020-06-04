@@ -38,6 +38,8 @@ SOURCES += \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
+    mapinterface.cpp \
+    maptile.cpp \
     npc.cpp \
     party.cpp \
     party_display.cpp \
@@ -45,6 +47,7 @@ SOURCES += \
     pc.cpp \
     pc_choice_panel.cpp \
     pc_ecquipment_display.cpp \
+    playeronmap.cpp \
     skill.cpp \
     status_effect.cpp \
     switchable_frame.cpp \
@@ -72,6 +75,8 @@ HEADERS += \
     items_display.h \
     mainmenu.h \
     mainwindow.h \
+    mapinterface.h \
+    maptile.h \
     npc.h \
     party.h \
     party_display.h \
@@ -79,6 +84,7 @@ HEADERS += \
     pc.h \
     pc_choice_panel.h \
     pc_ecquipment_display.h \
+    playeronmap.h \
     skill.h \
     status_effect.h \
     switchable_frame.h \
@@ -92,4 +98,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    Images.qrc
+    Images.qrc \
+    Texts.qrc
