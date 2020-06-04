@@ -6,6 +6,7 @@ tiles_storage::tiles_storage(int tileset)
   init_tiles(tileset);
   place_children();
   set_all_neighbors();
+  layout_->setSpacing(0);
 }
 
 int* tiles_storage::load_tileset(int *map, std::string path)
