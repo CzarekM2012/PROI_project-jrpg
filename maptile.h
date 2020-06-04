@@ -10,8 +10,8 @@ class maptile: public QFrame
 public:
   maptile(int x, int y, QString pix, bool walk = true, bool event = false);
   int coord_x, coord_y;
-  int tile_w, tile_h;
-  bool has_event, walkable;
+  int tile_w, tile_h, new_map;
+  bool has_event, walkable, is_curr_tile = false;
   QPixmap tile_pic_pix;
   QLabel *tile_pic;
 
