@@ -8,7 +8,7 @@ class switchable_frame : public QFrame
 {
 public:
     switchable_frame();
-protected:
+//protected:
     QGridLayout *layout_;
 };
 
