@@ -44,7 +44,7 @@ void MainWindow::battle()
 void MainWindow::map(int tileset, int player_pos = 27)
 {
   mapinterface *mapn = new mapinterface(tileset, player_pos);
-  //connect(mapn, SIGNAL (change_map(int, int)), this, SLOT (map(int, int)));
+  connect(mapn, SIGNAL (change_map(int, int)), this, SLOT (map(int, int)));
   switch_frames(mapn);
 
 }
