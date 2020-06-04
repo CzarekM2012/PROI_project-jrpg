@@ -11,9 +11,9 @@ class MainWindow : public QMainWindow
 public:
     MainWindow();
 
-private slots:
+public slots:
     void battle();
-    void map();
+    void map(int tileset, int player_pos);
     void dialog();
 private:
     void switch_frames(switchable_frame *new_frame);
