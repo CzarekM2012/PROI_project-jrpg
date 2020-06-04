@@ -2,10 +2,11 @@
 #define PLAYERONMAP_H
 
 #include <QWidget>
+#include "switchable_frame.h"
 
 class QLabel;
 class maptile;
-class playeronmap : public QWidget
+class playeronmap : public switchable_frame
 {
   Q_OBJECT
 public:
