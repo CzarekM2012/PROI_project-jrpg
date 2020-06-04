@@ -9,5 +9,37 @@
         <file>images/slime.png</file>
         <file>images/spider.png</file>
         <file>images/unspecified_humanoid.png</file>
+        <file>images/path.png</file>
+        <file>images/lake1.png</file>
+        <file>images/living_room.png</file>
+        <file>images/mountains.png</file>
+        <file>images/ruins1.png</file>
+        <file>images/ruins2.png</file>
+        <file>images/castle.png</file>
+        <file>images/sand_forest.png</file>
+        <file>images/sand_forest1.png</file>
+        <file>images/face1.png</file>
+        <file>images/face2.png</file>
+        <file>images/face3.png</file>
+        <file>images/face4.png</file>
+        <file>images/face5.png</file>
+        <file>images/face6.png</file>
+        <file>images/grass_bg.png</file>
+        <file>images/path_dirt_bg.png</file>
+        <file>images/trees_bg.png</file>
+        <file>images/stone_bg.png</file>
+        <file>images/water_corner_bg.png</file>
+        <file>images/water_edge_bg.png</file>
+        <file>images/water_edge_vert_bg.png</file>
+        <file>images/bush_bg.png</file>
+        <file>images/cactus_bg.png</file>
+        <file>images/oasis_bg.png</file>
+        <file>images/rock_bg.png</file>
+        <file>images/rock_hand_bg.png</file>
+        <file>images/rock_2hands_bg.png</file>
+        <file>images/sand1_bg.png</file>
+        <file>images/sand2_bg.png</file>
+        <file>images/house_bg.png</file>
+        <file>images/water_bg.png</file>
     </qresource>
 </RCC>
