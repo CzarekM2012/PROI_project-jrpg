@@ -54,7 +54,8 @@ mapinterface::mapinterface(int tileset, int player_state)
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
             if(player->curr_tile->has_event == true)
               {
-                emit change_map(player->curr_tile->new_map, 27);
+                if(player->curr_tile->new_map>=0)
+                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
 //              player->curr_tile->has_event = false;
 //              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
  //             curr_event->show();
@@ -72,12 +73,14 @@ mapinterface::mapinterface(int tileset, int player_state)
           {
             player->curr_tile = player->curr_tile->down_neigh;
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
- /*           if(player->curr_tile->has_event == true)
+            if(player->curr_tile->has_event == true)
               {
-              player->curr_tile->has_event = false;
-              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
-              curr_event->show();
-              }*/
+                if(player->curr_tile->new_map>=0)
+                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
+//              player->curr_tile->has_event = false;
+//              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
+//              curr_event->show();
+              }
           }
       }
     return;
@@ -91,12 +94,14 @@ mapinterface::mapinterface(int tileset, int player_state)
           {
             player->curr_tile = player->curr_tile->l_neigh;
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
-/*            if(player->curr_tile->has_event == true)
+            if(player->curr_tile->has_event == true)
               {
-              player->curr_tile->has_event = false;
-              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
-              curr_event->show();
-              }*/
+              if(player->curr_tile->new_map>=0)
+              emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
+//              player->curr_tile->has_event = false;
+ //             curr_event = new BgLabel(player->curr_tile->dialog_event, this);
+ //             curr_event->show();
+              }
           }
       }
     return;
@@ -110,12 +115,14 @@ mapinterface::mapinterface(int tileset, int player_state)
           {
             player->curr_tile = player->curr_tile->r_neigh;
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
-/*            if(player->curr_tile->has_event == true)
+            if(player->curr_tile->has_event == true)
               {
-              player->curr_tile->has_event = false;
-              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
-              curr_event->show();
-              }*/
+                if(player->curr_tile->new_map>=0)
+                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
+//              player->curr_tile->has_event = false;
+//              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
+//              curr_event->show();
+              }
           }
       }
     return;
