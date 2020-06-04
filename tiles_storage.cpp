@@ -36,7 +36,7 @@ void tiles_storage::init_tiles(int tileset)
                                             {":/images/water_edge_vert_bg.png", false}, {":/images/house_bg.png"}, {":/images/sand1_bg.png"}, {":/images/sand2_bg.png"},
                                             {":/images/bush_bg.png", false}, {":/images/cactus_bg.png"}, {":/images/oasis_bg.png"},
                                             {":/images/rock_bg.png", false}, {":/images/rock_hand_bg.png", false}, {":/images/rock_2hands_bg.png", false},
-                                            {":/images/path_dirt_bg.png", true, true, 1}};
+                                            {":/images/path_dirt_bg.png", true, true, 1}, {":/images/sand2_bg.png", true, true, 0}};
 
    int tileset0[70];
 if(tileset == 0)
@@ -58,7 +58,8 @@ else if(tileset == 2)
       {
         for(int i=0; i<10; i++)
         {
-        new_tile = new maptile(i, j, all_tiles[tileset0[pctr]].pic, all_tiles[tileset0[pctr]].walkable);
+        new_tile = new maptile(i, j, all_tiles[tileset0[pctr]].pic, all_tiles[tileset0[pctr]].walkable,
+                               all_tiles[tileset0[pctr]].has_event, all_tiles[tileset0[pctr]].new_map);
         pctr++;
         tiles.push_back(new_tile);
         }
