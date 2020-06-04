@@ -8,7 +8,7 @@ class maptile: public QFrame
 {
   Q_OBJECT
 public:
-  maptile(int x, int y, QString pix, bool walk = true, bool event = false);
+  maptile(int x, int y, QString pix, bool walk = true, bool event = false, int nmap = -1);
   int coord_x, coord_y;
   int tile_w, tile_h, new_map;
   bool has_event, walkable, is_curr_tile = false;
