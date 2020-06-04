@@ -76,7 +76,7 @@ mapinterface::mapinterface(int tileset, int player_state)
             if(player->curr_tile->has_event == true)
               {
                 if(player->curr_tile->new_map>=0)
-                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
+                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==2?9:3);
 //              player->curr_tile->has_event = false;
 //              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
 //              curr_event->show();
@@ -118,7 +118,7 @@ mapinterface::mapinterface(int tileset, int player_state)
             if(player->curr_tile->has_event == true)
               {
                 if(player->curr_tile->new_map>=0)
-                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
+                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?68:3);
 //              player->curr_tile->has_event = false;
 //              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
 //              curr_event->show();
