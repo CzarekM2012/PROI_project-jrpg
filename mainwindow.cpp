@@ -4,10 +4,11 @@
 MainWindow::MainWindow():QMainWindow()
 {
     setGeometry(QGuiApplication::primaryScreen()->geometry());
-    MainMenu *menu = new MainMenu(this);
-    switch_frames(menu);
+    //MainMenu *menu = new MainMenu(this);
+    //switch_frames(menu);
     //battle();
-    map();
+    map(0, 27);
+
 }
 
 void MainWindow::switch_frames(switchable_frame *new_frame)
@@ -40,10 +41,12 @@ void MainWindow::battle()
     switch_frames(battle);
 }
 
-void MainWindow::map()
+void MainWindow::map(int tileset, int player_pos = 27)
 {
-  mapinterface *map = new mapinterface(0);
-  switch_frames(map);
+  mapinterface *mapn = new mapinterface(tileset, player_pos);
+  //connect(mapn, SIGNAL (change_map(int, int)), this, SLOT (map(int, int)));
+  switch_frames(mapn);
+
 }
 
 void MainWindow::dialog()
