@@ -3,7 +3,7 @@
 #include <QString>
 #include <QPixmap>
 
-maptile::maptile(int x, int y, QString pix, bool walk, bool event)
+maptile::maptile(int x, int y, QString pix, bool walk, bool event, int nmap)
 {
   coord_x = x;
   coord_y = y;
@@ -11,6 +11,7 @@ maptile::maptile(int x, int y, QString pix, bool walk, bool event)
   tile_h = 90; //80
   has_event = event;
   walkable = walk;
+  new_map = nmap;
   setStyleSheet(QString("border-image:url(") + pix + QString(")"));
 
   up_neigh = nullptr;
