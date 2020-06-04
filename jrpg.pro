@@ -51,7 +51,8 @@ SOURCES += \
     skill.cpp \
     status_effect.cpp \
     switchable_frame.cpp \
-    target_frame.cpp
+    target_frame.cpp \
+    tiles_storage.cpp
 
 HEADERS += \
     action.h \
@@ -88,7 +89,8 @@ HEADERS += \
     skill.h \
     status_effect.h \
     switchable_frame.h \
-    target_frame.h
+    target_frame.h \
+    tiles_storage.h
 
 FORMS +=
 
