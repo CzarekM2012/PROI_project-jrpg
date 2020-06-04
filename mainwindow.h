@@ -13,6 +13,8 @@ public:
 
 private slots:
     void battle();
+    void map();
+    void dialog();
 private:
     void switch_frames(switchable_frame *new_frame);
 };
