@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "mapinterface.h"
+#include "dialoginterface.h"
 
 MainWindow::MainWindow():QMainWindow()
 {
@@ -8,6 +9,7 @@ MainWindow::MainWindow():QMainWindow()
     //switch_frames(menu);
     //battle();
     map(0, 27);
+    //dialog(3);
 
 }
 
@@ -16,6 +18,19 @@ void MainWindow::switch_frames(switchable_frame *new_frame)
     delete centralWidget();
     new_frame->setParent(this);
     setCentralWidget(new_frame);
+}
+
+void MainWindow::hide_frame(switchable_frame *new_frame)
+{
+    //hidden_frame = centralWidget();
+    new_frame->setParent(this);
+    setCentralWidget(new_frame);
+}
+
+void MainWindow::restore_frame()
+{
+    delete centralWidget();
+    setCentralWidget(curr_map);
 }
 
 void MainWindow::battle()
@@ -45,11 +60,19 @@ void MainWindow::map(int tileset, int player_pos = 27)
 {
   mapinterface *mapn = new mapinterface(tileset, player_pos);
   connect(mapn, SIGNAL (change_map(int, int)), this, SLOT (map(int, int)));
+  curr_map = mapn;
   switch_frames(mapn);
 
 }
 
-void MainWindow::dialog()
+void MainWindow::dialog(int dnum)
 {
+  dialoginterface *dg = new dialoginterface(dnum);
+  connect(dg, SIGNAL (dialog_end()), this, SLOT (end_dialog()));
+  switch_frames(dg);
+}
 
+void MainWindow::end_dialog()
+{
+  //map(int tileset, int player_pos = 27);
 }
