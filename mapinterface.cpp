@@ -8,10 +8,7 @@ mapinterface::mapinterface(int tileset, int player_state)
       create_children();
       place_children();
       connect_signals();
-      player = new playeronmap(tiles->tiles[player_state], this);
-      player->curr_tile->is_curr_tile = true;
-      player->setStyleSheet(QString("border-image:url(:/images/face1.png)"));
-      tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
+      place_player(player_state);
   }
 
   void mapinterface::create_children()
@@ -44,6 +41,15 @@ mapinterface::mapinterface(int tileset, int player_state)
     return;
   }
 
+  void mapinterface::place_player(int player_state)
+  {
+    player = new playeronmap(tiles->tiles[player_state], this);
+    player->curr_tile->is_curr_tile = true;
+    player->int_curr_tile = player_state;
+    player->setStyleSheet(QString("border-image:url(:/images/face1.png)"));
+    tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
+  }
+
   void mapinterface::slotButtonUp()
   {
     if(player->curr_tile->up_neigh != 0)
@@ -51,14 +57,18 @@ mapinterface::mapinterface(int tileset, int player_state)
         if(player->curr_tile->up_neigh->walkable == true)
           {
             player->curr_tile = player->curr_tile->up_neigh;
+            player->int_curr_tile -= 10;
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
             if(player->curr_tile->has_event == true)
               {
-                if(player->curr_tile->new_map>=0)
+                player->curr_tile->has_event = false;
+                if(player->curr_tile->d_event >= 0)
+                  {
+                  curr_event = new dialoginterface(player->curr_tile->d_event);
+                  layout_->addWidget(curr_event, 0, 0, 8, 15);
+                  }
+              if(player->curr_tile->new_map>=0)
                 emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
-//              player->curr_tile->has_event = false;
-//              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
- //             curr_event->show();
               }
           }
       }
@@ -72,14 +82,18 @@ mapinterface::mapinterface(int tileset, int player_state)
         if(player->curr_tile->down_neigh->walkable == true)
           {
             player->curr_tile = player->curr_tile->down_neigh;
+            player->int_curr_tile += 10;
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
             if(player->curr_tile->has_event == true)
               {
-                if(player->curr_tile->new_map>=0)
+                player->curr_tile->has_event = false;
+                if(player->curr_tile->d_event >= 0)
+                  {
+                  curr_event = new dialoginterface(player->curr_tile->d_event);
+                  layout_->addWidget(curr_event, 0, 0, 8, 15);
+                  }
+              if(player->curr_tile->new_map>=0)
                 emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==2?9:3);
-//              player->curr_tile->has_event = false;
-//              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
-//              curr_event->show();
               }
           }
       }
@@ -93,14 +107,18 @@ mapinterface::mapinterface(int tileset, int player_state)
         if(player->curr_tile->l_neigh->walkable == true)
           {
             player->curr_tile = player->curr_tile->l_neigh;
+            player->int_curr_tile -= 1;
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
             if(player->curr_tile->has_event == true)
               {
+                player->curr_tile->has_event = false;
+              if(player->curr_tile->d_event >= 0)
+                {
+                curr_event = new dialoginterface(player->curr_tile->d_event);
+                layout_->addWidget(curr_event, 0, 0, 8, 15);
+                }
               if(player->curr_tile->new_map>=0)
-              emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
-//              player->curr_tile->has_event = false;
- //             curr_event = new BgLabel(player->curr_tile->dialog_event, this);
- //             curr_event->show();
+                emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?62:3);
               }
           }
       }
@@ -114,14 +132,18 @@ mapinterface::mapinterface(int tileset, int player_state)
         if(player->curr_tile->r_neigh->walkable == true)
           {
             player->curr_tile = player->curr_tile->r_neigh;
+            player->int_curr_tile += 1;
             tiles->layout_->addWidget(player, player->curr_tile->coord_y, player->curr_tile->coord_x);
             if(player->curr_tile->has_event == true)
               {
-                if(player->curr_tile->new_map>=0)
+                player->curr_tile->has_event = false;
+                if(player->curr_tile->d_event >= 0)
+                  {
+                  curr_event = new dialoginterface(player->curr_tile->d_event);
+                  layout_->addWidget(curr_event, 0, 0, 8, 15);
+                  }
+              if(player->curr_tile->new_map>=0)
                 emit change_map(player->curr_tile->new_map, player->curr_tile->new_map==1?68:3);
-//              player->curr_tile->has_event = false;
-//              curr_event = new BgLabel(player->curr_tile->dialog_event, this);
-//              curr_event->show();
               }
           }
       }
