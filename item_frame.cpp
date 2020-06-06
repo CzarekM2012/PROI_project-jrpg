@@ -1,35 +1,46 @@
 #include "item_frame.h"
 
-item_frame::item_frame()
+item_frame::item_frame():target_frame(), index_(0){
+    place_counter();}
+
+item_frame::item_frame(equipment *equipment, int index):target_frame(equipment), index_(index){place_counter();}
+
+item_frame::item_frame(consumable *consumable, int index):target_frame(consumable), index_(index){place_counter(represented_object_->get_counter());}
+
+int item_frame::get_index(){return index_;}
+
+void item_frame::set_counter(int number){counter_->setNum(number);}
+
+void item_frame::clear()
 {
-    int w = width(), h = height();
-    counter_ = new QLabel(this);
-    counter_->setMaximumSize(w/5, h/5);
-    counter_->move(4*w/5, 4*h/5);
+    represented_object_=nullptr;
+    update();
 }
 
-item_frame::item_frame(equipment *item):item_frame(){change_item(item);}
-
-item_frame::item_frame(QPair<consumable, int> *item):item_frame(){change_item(item);}
-
-void item_frame::change_item(equipment *item)
+void item_frame::update()
 {
-    represented_item_ = item;
+    int number = represented_object_==nullptr ? 0 : represented_object_->get_counter();
+    if(number !=0){counter_->setNum(number);}
+    else{counter_->setText("");}
     set_standard_graphic();
-    counter_->setText("");
-}
-
-void item_frame::change_item(QPair<consumable, int> *item)
-{
-    represented_item_ = &item->first;
-    set_standard_graphic();
-    char temp[4] = "x";
-    int_to_char_array(item->second, &temp[1]);
-    counter_->setText(QString(temp));
 }
 
 void item_frame::mousePressEvent(QMouseEvent *event)
 {
-    if(represented_item_!=nullptr){emit choosen_item(represented_item_);}
+    if(represented_object_!=nullptr){emit choosen_slot(represented_object_, index_);}
     QWidget::mousePressEvent(event);
 }
+
+void item_frame::place_counter(int number)
+{
+    int w = width(), h = height();
+    counter_ = new QLabel(this);
+    counter_->setAlignment(Qt::AlignRight);
+    counter_->setStyleSheet("background-color:transparent");
+    if(number!=0){counter_->setNum(number);}
+    counter_->setNum(1000);
+    int cw = counter_->width(), ch = counter_->height();
+    //counter_->move(w-cw,h-ch);
+}
+
+
