@@ -2,20 +2,18 @@
 
 consumable::consumable():item(){}
 
-consumable::consumable(consumable *consumable):item(consumable)
-{
-    invoked_skill_ = consumable->invoked_skill_;
-    counter_ = consumable->counter_;
-}
+consumable::consumable(consumable *consumable):item(consumable){counter_ = consumable->counter_;}
 
-consumable::consumable(const char *name, const char *description, const short id, skill *invoked_skill, unsigned int counter):item(name, description, id), counter_(counter){invoked_skill_ = invoked_skill;}
+consumable::consumable(const char *name, int *stats, const short id, bool battle_item, unsigned int counter, const char *description):item(name, stats, id, description), counter_(counter), battle_item_(battle_item){}
+
+int consumable::get_counter(){return counter_;}
 
 void consumable::increase_counter(int amount){counter_+=amount;}
 
 bool consumable::decrease_counter(int amount)
 {
     counter_= counter_-amount<0 ? 0 : counter_-amount;
-    return counter_=0;
+    return counter_==0;
 }
 
-skill *consumable::get_invoked_skill(){return invoked_skill_;}
+bool consumable::battle_item(){return battle_item_;}
