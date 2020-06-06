@@ -20,7 +20,7 @@ public:
   tiles_storage(int tileset);
   std::vector<maptile*> tiles;
   void init_tiles(int tileset);
-  int* load_tileset(int *map, std::string path);
+  int* load_tileset(int *map, int *events, std::string path);
   void set_all_neighbors();
   void place_children();
 
