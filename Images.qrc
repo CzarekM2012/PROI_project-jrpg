@@ -6,10 +6,12 @@
         <file>images/character2.png</file>
         <file>images/character3.png</file>
         <file>images/character4.png</file>
+        <file>images/text_bg.png</file>
         <file>images/slime.png</file>
         <file>images/spider.png</file>
         <file>images/unspecified_humanoid.png</file>
         <file>images/path.png</file>
+        <file>images/desert.png</file>
         <file>images/lake1.png</file>
         <file>images/living_room.png</file>
         <file>images/mountains.png</file>
@@ -18,6 +20,7 @@
         <file>images/castle.png</file>
         <file>images/sand_forest.png</file>
         <file>images/sand_forest1.png</file>
+        <file>images/face0.png</file>
         <file>images/face1.png</file>
         <file>images/face2.png</file>
         <file>images/face3.png</file>
