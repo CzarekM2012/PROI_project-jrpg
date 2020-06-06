@@ -6,8 +6,26 @@
         <file>images/character2.png</file>
         <file>images/character3.png</file>
         <file>images/character4.png</file>
-        <file>images/slime.png</file>
         <file>images/spider.png</file>
-        <file>images/unspecified_humanoid.png</file>
+        <file>images/blue slime.png</file>
+        <file>images/character1-face.png</file>
+        <file>images/character2-face.png</file>
+        <file>images/character3-face.png</file>
+        <file>images/character4-face.png</file>
+        <file>images/faces_face5.png</file>
+        <file>images/faces_face6.png</file>
+        <file>images/ghost.png</file>
+        <file>images/green slime.png</file>
+        <file>images/red slime.png</file>
+        <file>images/hoodie.png</file>
+        <file>images/stick.png</file>
+        <file>images/sword.png</file>
+        <file>images/attack_icon.png</file>
+        <file>images/defense_icon.png</file>
+        <file>images/health_icon.png</file>
+        <file>images/initiative_icon.png</file>
+        <file>images/skill_points_icon.png</file>
+        <file>images/special_attack_icon.png</file>
+        <file>images/special_defense_icon.png</file>
     </qresource>
 </RCC>
