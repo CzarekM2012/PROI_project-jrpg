@@ -35,6 +35,7 @@ SOURCES += \
     item_frame.cpp \
     item_storage.cpp \
     items_display.cpp \
+    label_with_icon.cpp \
     main.cpp \
     mainmenu.cpp \
     mainwindow.cpp \
@@ -44,7 +45,7 @@ SOURCES += \
     party_view.cpp \
     pc.cpp \
     pc_choice_panel.cpp \
-    pc_ecquipment_display.cpp \
+    pc_equipment_display.cpp \
     skill.cpp \
     status_effect.cpp \
     switchable_frame.cpp \
@@ -70,6 +71,7 @@ HEADERS += \
     item_frame.h \
     item_storage.h \
     items_display.h \
+    label_with_icon.h \
     mainmenu.h \
     mainwindow.h \
     npc.h \
@@ -78,7 +80,7 @@ HEADERS += \
     party_view.h \
     pc.h \
     pc_choice_panel.h \
-    pc_ecquipment_display.h \
+    pc_equipment_display.h \
     skill.h \
     status_effect.h \
     switchable_frame.h \
