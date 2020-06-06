@@ -48,8 +48,8 @@ void battleinterface::connect_signals()
 {
     connect(attack_, SIGNAL(clicked()), this, SLOT(initiate_action()));
     connect(defence_, SIGNAL(clicked()), this, SLOT(initiate_action()));
-
-    connect(item_, SIGNAL(clicked()), this, SLOT(select_item()));
+    connect(skill_, SIGNAL(clicked()), this, SLOT(initiate_action()));
+    connect(item_, SIGNAL(clicked()), this, SLOT(initiate_action()));
     connect(return_, SIGNAL(clicked()), this, SLOT(repeat_move()));
     connect(confirm_, SIGNAL(clicked()), this, SLOT(take_control_from_the_player()));
     party_view_->prepare_status_panels_highlight(party_statuses_);
@@ -86,6 +86,7 @@ void battleinterface::give_control_to_the_player(pc *pc)
     attack_->setEnabled(true);
     defence_->setEnabled(true);
     skill_->setEnabled(true);
+    item_->setEnabled(true);
     return_->setEnabled(false);
     confirm_->setEnabled(false);
 }
@@ -134,7 +135,7 @@ void battleinterface::restart_battle()
     action_timer_->start(100);
 }
 
-void battleinterface::increase_actions()
+void battleinterface::increase_actions()    //intentional in order to give enemies higher priority in action queue
 {
     for(int r=0; r<2; r++)
     {
@@ -143,7 +144,7 @@ void battleinterface::increase_actions()
             npc *npc = enemy_group_.get_npc_adress(r, p);
             if(npc->alive())
             {
-                int initiative = npc->get_initiative();
+                int initiative = npc->get_stat(8);
                 QProgressBar *action = enemy_group_statuses_->get_character_status_panel(r, p)->get_action_bar_();
                 int current_value = action->value(), new_value = current_value + initiative;
                 if(new_value > action->maximum())
@@ -167,7 +168,7 @@ void battleinterface::increase_actions()
             pc *pc = battle_party_.get_pc_address(r, p);
             if(pc->alive())
             {
-                int initiative = pc->get_initiative();
+                int initiative = pc->get_stat(8);
                 QProgressBar *action = party_statuses_->get_character_status_panel(r, p)->get_action_bar_();
                 int current_value = action->value(), new_value = current_value + initiative;
                 if(new_value > action->maximum())
@@ -296,14 +297,26 @@ void battleinterface::repeat_move()
     give_control_to_the_player(battle_party_.get_pc_address(action_queue_[queue_index_].row, action_queue_[queue_index_].position));
 }
 
-void battleinterface::select_item()
-{
-
-}
-
 void battleinterface::initiate_action()
 {
     QObject *sender = QObject::sender();
     if(sender == attack_){choose_target(normal_attack_);}
     else if(sender == defence_){choose_target(normal_defence_);}
+    else if(sender == skill_)
+    {
+        emit switch_back();
+    }
+    else if(sender == item_)
+    {
+        equipment_management_interface *eq = new equipment_management_interface(&battle_party_);
+        connect(eq, SIGNAL(close_signal(switchable_frame*)), this, SLOT(remove_from_layout(switchable_frame*)));
+        layout_->addWidget(eq, 0, 0, 20, 20);
+    }
+}
+
+void battleinterface::remove_from_layout(switchable_frame *frame)
+{
+    layout_->removeWidget(frame);
+    delete frame;
+    update();
 }
