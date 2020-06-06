@@ -37,9 +37,10 @@ private slots:
     void update_target(entity *new_target);
     void take_control_from_the_player();
     void repeat_move();
-    void select_item();
     void initiate_action();
-
+    void remove_from_layout(switchable_frame*);
+signals:
+    void close_signal(QWidget*);
 private:
     party battle_party_;
     enemy_group enemy_group_;
