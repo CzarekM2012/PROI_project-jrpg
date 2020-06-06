@@ -12,7 +12,7 @@ class playeronmap : public switchable_frame
 public:
   playeronmap(maptile *start, QWidget *parent = nullptr);
   maptile *curr_tile;
-  QLabel *face;
+  int int_curr_tile;
 
 };
 
