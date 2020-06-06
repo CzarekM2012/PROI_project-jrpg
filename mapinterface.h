@@ -5,6 +5,7 @@
 #include "maptile.h"
 #include "playeronmap.h"
 #include "tiles_storage.h"
+#include "dialoginterface.h"
 
 
 class mapinterface : public switchable_frame
@@ -13,12 +14,12 @@ class mapinterface : public switchable_frame
 public:
   mapinterface(int tileset, int player_state);
   tiles_storage *tiles;
-  //  std::vector<maptile*> tiles;
   QPushButton *up;
   QPushButton *down;
   QPushButton *left;
   QPushButton *right;
   playeronmap *player;
+  dialoginterface *curr_event;
 
 private slots:
  void slotButtonUp();
@@ -33,6 +34,7 @@ private:
   void create_children();
   void place_children();
   void connect_signals();
+  void place_player(int player_state);
 
 signals:
   void change_map(int m, int p);
