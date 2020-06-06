@@ -5,7 +5,7 @@
 class npc: public character
 {
 public:
-    npc(), npc(const char *name, const char *description, unsigned int *stats_array);
+    npc(), npc(const char *name, int *stats, const char *description="");
 };
 
 #endif // NPC_H
