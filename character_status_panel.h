@@ -7,6 +7,8 @@
 #include "pc.h"
 #include "npc.h"
 #include "data_processing.h"
+#include "label_with_icon.h"
+
 class character_status_panel: public QFrame
 {
     Q_OBJECT
@@ -20,7 +22,8 @@ private slots:
     void highlight_off();
 
 private:
-    QLabel *name_, *hp_, *sp_;
+    QLabel *name_;
+    label_with_icon *hp_, *sp_;
     QProgressBar *action_;
     QGridLayout *layout_;
 };
