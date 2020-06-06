@@ -5,8 +5,8 @@ character_status_panel::character_status_panel()
 {
     layout_ = new QGridLayout();
     name_ = new QLabel();
-    hp_ = new QLabel();
-    sp_ = new QLabel();
+    hp_ = new label_with_icon("health_icon");
+    sp_ = new label_with_icon("skill_points_icon");
     action_ = new QProgressBar();
     action_->setTextVisible(false);
     this->setLayout(layout_);
@@ -15,24 +15,25 @@ character_status_panel::character_status_panel()
     layout_->addWidget(sp_, 4, 0);
     layout_->addWidget(action_, 6, 0);
     name_->setAlignment(Qt::AlignRight);
-    hp_->setAlignment(Qt::AlignRight);
-    sp_->setAlignment(Qt::AlignRight);
+    hp_->label_->setAlignment(Qt::AlignRight);
+    sp_->label_->setAlignment(Qt::AlignRight);
     layout_->setSpacing(0);
     layout_->setMargin(0);
 }
 void character_status_panel::paste_data(character *character)
 {
-    if(character->get_max_hp()>0)
+    int character_stats[9];
+    character->get_stats(character_stats);
+    if(character_stats[0]>0)
     {
         name_->setText(character->get_name());
         char *text1 = new char[12], *text2 = new char[12];
-        int temp = character->get_current_hp();
-        int_to_char_array(temp, text1);
-        int_to_char_array(character->get_max_hp(), text2);
-        hp_->setText(QString(text1) + QString("/") + QString(text2));
-        int_to_char_array(character->get_current_sp(), text1);
-        int_to_char_array(character->get_max_sp(), text2);
-        sp_->setText(QString(text1) + QString("/") + QString(text2));
+        int_to_char_array(character_stats[1], text1);
+        int_to_char_array(character_stats[0], text2);
+        hp_->label_->setText(QString(text1) + QString("/") + QString(text2));
+        int_to_char_array(character_stats[3], text1);
+        int_to_char_array(character_stats[2], text2);
+        sp_->label_->setText(QString(text1) + QString("/") + QString(text2));
         delete [] text1;
         delete [] text2;
     }
