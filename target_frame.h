@@ -9,9 +9,9 @@ class target_frame : public QFrame
 {
     Q_OBJECT
 public:
-    target_frame(), target_frame(item *);
+    target_frame(), target_frame(entity *);
     ~target_frame()=0;
-    void set_represented_object(character *), set_represented_object(item *);
+    void set_represented_object(entity*);
     entity* get_represented_object();
     std::pair<short int, short int> get_position();
     void set_standard_graphic(const char *type="");
