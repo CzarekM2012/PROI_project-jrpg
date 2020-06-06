@@ -12,10 +12,8 @@ public:
     void swap_members(pc *first_member, pc *second_member);
     item_storage *get_item_storage();
 private:
-    void rewrite_from_pcs_and_delete_copies();
     pc formation_[3][2]={}; //frontline - backline - reserve
     item_storage *item_storage_;
-    skill *available_skills[48]={};
 };
 
 #endif // PARTY_H
