@@ -6,13 +6,14 @@
 class consumable : public item
 {
 public:
-    consumable(), consumable(consumable*), consumable(const char *name, const char *description, const short id, skill *invoked_skill, unsigned int counter);
+    consumable(), consumable(consumable*), consumable(const char *name, int *stats, const short id, bool battle_item, unsigned int counter=1, const char *description="");
+    int get_counter();
     void increase_counter(int amount=1);
     bool decrease_counter(int amount=1);
-    skill *get_invoked_skill();
+    bool battle_item();
 private:
-    skill *invoked_skill_;
-    unsigned int counter_;
+    int counter_;
+    bool battle_item_;
 };
 
 #endif // CONSUMABLE_H
