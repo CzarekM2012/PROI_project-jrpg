@@ -2,14 +2,8 @@
 
 equipment::equipment():item(){}
 
-equipment::equipment(equipment *equipment):item(equipment)
-{
-    type_of_equipment_ = equipment->type_of_equipment_;
-    memcpy(stats_modification_array_, equipment->stats_modification_array_, 9*sizeof (int));
-}
+equipment::equipment(equipment *equipment):item(equipment){type_of_equipment_ = equipment->type_of_equipment_;}
 
-equipment::equipment(const char *name, const char *description, short id, short type, int *stats):item(name, description, id)
-{
-    type_of_equipment_ = type;
-    memcpy(stats_modification_array_, stats, 9*sizeof (int));
-}
+equipment::equipment(const char *name, int *stats, short id, short type, const char *description):item(name, stats, id, description), type_of_equipment_(type){}
+
+short equipment::get_type_of_eq(){return type_of_equipment_;}
