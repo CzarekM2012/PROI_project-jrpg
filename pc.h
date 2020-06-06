@@ -6,9 +6,10 @@
 class pc: public character
 {
 public:
-    pc(), pc(const char *name, const char *description, unsigned int *stats_array, equipment **gear_array);
-    pc(character *character), pc(pc *pc), pc(npc *npc);
-    equipment *get_part_of_ecquipment(int identifier);
+    pc(), pc(const char *name, int *stats_array, equipment **gear_array, const char *description=""), pc(pc *pc);
+    entity *get_part_of_equipment(unsigned int);
+    bool calculate_stats_after_equip(entity*, int*);
+    equipment* equip(equipment*);
 private:
     equipment *equipment_[7]={};
 };
