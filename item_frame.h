@@ -10,15 +10,19 @@ class item_frame : public target_frame
 {
     Q_OBJECT
 public:
-    item_frame(), item_frame(equipment *), item_frame(QPair<consumable, int> *item);
-    void change_item(equipment *), change_item(QPair<consumable, int> *item);
+    item_frame(), item_frame(equipment *equipment, int index=0), item_frame(consumable *consumable, int index=0);
+    int get_index();
+    void set_counter(int number);
+    void clear();
+    void update();
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 signals:
-    void choosen_item(entity *);
+    void choosen_slot(entity *, int);
 private:
-    item *represented_item_ = nullptr;
+    void place_counter(int number=0);
     QLabel *counter_;
+    int index_;
 };
 
 #endif // ITEM_FRAME_H
