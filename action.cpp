@@ -24,13 +24,15 @@ void action::execute()
                 if(base_stat_index == 4 || base_stat_index == 6){temp_power -= targets_[i]->get_stat(base_stat_index+1);}
                 int current_value = targets_[i]->get_stat(affected_stat_index);
                 temp_power = current_value-temp_power < 0 ? current_value : temp_power;
-                targets_[i]->set_stat(current_value-temp_power, affected_stat_index);
+                int result = current_value-temp_power;
+                targets_[i]->set_stat(result, affected_stat_index);
                 if(affected_stat_index!=1)
                 {
                     int stats[9]={};
                     stats[affected_stat_index] = temp_power;
                     targets_[i]->add_status_effect(status_effect(stats, 2), false);
                 }
+                else if(result == 0){targets_[i]->set_alive(false);}
             }
         }
         return;
