@@ -1,14 +1,27 @@
-#include "pc_ecquipment_display.h"
+#include "pc_equipment_display.h"
 
-pc_ecquipment_display::pc_ecquipment_display(){}
-
-pc_ecquipment_display::pc_ecquipment_display(pc *pc)
+pc_equipment_display::pc_equipment_display()
 {
-    displayed_pc_ = pc;
-    int frames_coordinates[7][2]{{0, 1}, {1, 0}, {1, 1}, {1, 2}, {2, 0}, {2, 1}, {3, 1}};
+    int frames_coordinates[7][2]{{0, 1}, {1, 1}, {2, 1}, {3, 1}, {2, 0}, {1, 0}, {1, 2}};
     for(int i=0; i<7; i++)
     {
-        ecquipment_[i] = new item_frame(displayed_pc_->get_part_of_ecquipment(i));
-        layout_->addWidget(ecquipment_[i], frames_coordinates[i][0], frames_coordinates[i][1]);
+        equipment_[i] = new item_frame();
+        layout_->addWidget(equipment_[i], frames_coordinates[i][0], frames_coordinates[i][1]);
+    }
+}
+
+void pc_equipment_display::display_equipment(pc *pc)
+{
+    displayed_pc_ = pc;
+    update();
+}
+
+void pc_equipment_display::update()
+{
+    for(int i=0; i<7; i++)
+    {
+        entity *temp = displayed_pc_->get_part_of_equipment(i);
+        equipment_[i]->set_represented_object(temp);
+        equipment_[i]->set_standard_graphic();
     }
 }
