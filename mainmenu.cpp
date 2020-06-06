@@ -1,7 +1,7 @@
 #include "mainmenu.h"
 #include "battleinterface.h"
 
-MainMenu::MainMenu(QObject *parent):switchable_frame()
+MainMenu::MainMenu():switchable_frame()
 {
     new_game_ = new QPushButton("New Game");
     load_game_ = new QPushButton("Load Game");
@@ -22,29 +22,11 @@ MainMenu::MainMenu(QObject *parent):switchable_frame()
     layout_->addWidget(exit_, 3, 5, Qt::AlignRight);
     setStyleSheet("QFrame{border-image:url(:/images/main_menu-background_graphic.png)}"
                   "QPushButton{border-image:url(:/images/main_menu-button_graphic.png)}");
-    connect_buttons(parent);
 }
 
 void MainMenu::connect_buttons(QObject *parent)
 {
     connect(new_game_, SIGNAL(clicked()), parent, SLOT(battle()));
-    connect(load_game_, SIGNAL(clicked()), this, SLOT(load_game()));
-    connect(options_, SIGNAL(clicked()), this, SLOT(options()));
+    connect(load_game_, &QPushButton::clicked, this, [this](){emit close_signal(this);});
     connect(exit_, SIGNAL(clicked()), parent, SLOT(close()));
-}
-
-//QFrame *MainMenu::get_frame_address(){return background_;}
-//void MainMenu::set_parent(MainWindow *MainWindow){parent_ = MainWindow;}
-
-void MainMenu::start_new_game()//initiate random fight at the moment
-{
-
-}
-
-void MainMenu::load_game()
-{
-}
-
-void MainMenu::options()
-{
 }
