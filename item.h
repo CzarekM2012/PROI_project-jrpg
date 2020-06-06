@@ -5,7 +5,7 @@
 class item : public entity
 {
 public:
-    item(), item(item*), item(const char *name, const char *description, const short item_id);
+    item(), item(item*), item(const char *name, int*stats, const short item_id, const char *description);
     short get_id();
 private:
     short id_;
