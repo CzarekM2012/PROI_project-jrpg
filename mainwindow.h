@@ -13,8 +13,11 @@ public:
 
 private slots:
     void battle();
+    void switch_frames_back();
 private:
     void switch_frames(switchable_frame *new_frame);
+    void remember_and_switch_frames(switchable_frame *new_frame);
+    QWidget *remembered_frame_;
 };
 
 #endif // MAINWINDOW_H
