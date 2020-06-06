@@ -9,13 +9,8 @@ class MainMenu: public switchable_frame
 {
     Q_OBJECT
     public:
-        MainMenu(QObject *);
+        MainMenu();
         void connect_buttons(QObject*);
-    private slots:
-        void start_new_game();
-        void load_game();
-        void options();
-
     private:
         QPushButton *new_game_, *load_game_, *options_, *exit_;
 };
