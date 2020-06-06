@@ -23,6 +23,7 @@ SOURCES += \
     character_status_panel.cpp \
     consumable.cpp \
     data_processing.cpp \
+    dialoginterface.cpp \
     enemy_group.cpp \
     enemy_group_view.cpp \
     entity.cpp \
@@ -62,6 +63,7 @@ HEADERS += \
     character_status_panel.h \
     consumable.h \
     data_processing.h \
+    dialoginterface.h \
     enemy_group.h \
     enemy_group_view.h \
     entity.h \
