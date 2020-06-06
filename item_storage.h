@@ -10,6 +10,8 @@ public:
     bool add_item(consumable*), add_item(equipment*);
     equipment *get_equipment(int);
     consumable *get_consumable(int);
+    int get_equipment_slot(entity *);
+    int get_consumable_slot(entity *);
     void set_item(equipment*, unsigned int), set_item(consumable, unsigned int);
 private:
     consumable consumables_[20]={};
