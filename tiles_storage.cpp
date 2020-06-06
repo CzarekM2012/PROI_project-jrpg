@@ -9,7 +9,7 @@ tiles_storage::tiles_storage(int tileset)
   layout_->setSpacing(0);
 }
 
-int* tiles_storage::load_tileset(int *map, std::string path)
+int* tiles_storage::load_tileset(int *map, int *events, std::string path)
   /*
   Loads tileset from a file.
   */
@@ -23,15 +23,19 @@ int* tiles_storage::load_tileset(int *map, std::string path)
          readfile >> num;
          map[i] = num;
        }
+     for (int i = 0; i<70; i++)
+       {
+         int num;
+         readfile >> num;
+         events[i] = num;
+       }
 
      return map;
   }
 
-//DO POPRAWIENIA
 void tiles_storage::init_tiles(int tileset)
 {
-//int tileset: 0=plains, 1=sand forest, 2=ruins
-  QString tf = ":/images/";
+//tileset: 0=plains, 1=sand forest, 2=ruins
   std::vector<tile_descriptor> all_tiles = {{":/images/grass_bg.png"}, {":/images/trees_bg.png", false}, {":/images/path_dirt_bg.png"},
                                             {":/images/stone_bg.png"}, {":/images/water_bg.png", false}, {":/images/water_corner_bg.png", false}, {":/images/water_edge_bg.png", false},
                                             {":/images/water_edge_vert_bg.png", false}, {":/images/house_bg.png"}, {":/images/sand1_bg.png"}, {":/images/sand2_bg.png"},
@@ -43,17 +47,18 @@ void tiles_storage::init_tiles(int tileset)
                                             {":/images/rock_floor_bg.png", true, true, 1}};
 
    int tileset0[70];
+   int events[70];
 if(tileset == 0)
   {
-    load_tileset(tileset0, "map0.txt");
+    load_tileset(tileset0, events, "map0.txt");
   }
 else if(tileset == 1)
   {
-    load_tileset(tileset0, "map1.txt");
+    load_tileset(tileset0, events, "map1.txt");
   }
 else if(tileset == 2)
   {
-    load_tileset(tileset0, "map2.txt");
+    load_tileset(tileset0, events, "map2.txt");
   }
     maptile* new_tile;
     int pctr = 0;
@@ -63,7 +68,7 @@ else if(tileset == 2)
         for(int i=0; i<10; i++)
         {
         new_tile = new maptile(i, j, all_tiles[tileset0[pctr]].pic, all_tiles[tileset0[pctr]].walkable,
-                               all_tiles[tileset0[pctr]].has_event, all_tiles[tileset0[pctr]].new_map);
+                               all_tiles[tileset0[pctr]].has_event, all_tiles[tileset0[pctr]].new_map, events[pctr]);
         pctr++;
         tiles.push_back(new_tile);
         }
