@@ -4,13 +4,17 @@
 #include "item_frame.h"
 #include "pc.h"
 
-class pc_ecquipment_display : public switchable_frame
+class pc_equipment_display : public switchable_frame
 {
+    Q_OBJECT
 public:
-    pc_ecquipment_display(), pc_ecquipment_display(pc *pc);
+    pc_equipment_display(), pc_equipment_display(pc *pc);
+    void update();
+private slots:
+    void display_equipment(pc*);
 private:
     pc *displayed_pc_;
-    item_frame *ecquipment_[7];
+    item_frame *equipment_[7];
 };
 
 #endif // PC_ECQUIPMENT_DISPLAY_H
