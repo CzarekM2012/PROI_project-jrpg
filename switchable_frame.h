@@ -6,8 +6,12 @@
 
 class switchable_frame : public QFrame
 {
+    Q_OBJECT
 public:
     switchable_frame();
+signals:
+    void close_signal(switchable_frame*);
+    void switch_back();
 protected:
     QGridLayout *layout_;
 };
