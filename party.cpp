@@ -66,5 +66,3 @@ void party::swap_members(pc *first_member, pc *second_member)
 }
 
 item_storage *party::get_item_storage(){return item_storage_;}
-
-void party::rewrite_from_pcs_and_delete_copies(){}
