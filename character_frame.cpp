@@ -60,22 +60,20 @@ void character_frame::paintEvent(QPaintEvent *event)
 
 void character_frame::is_target(entity *entity)
 {
-    if(state_ > 2)
+    if(state_ > 1)
     {
         if(entity == represented_object_)
         {
-            if(state_ > 6)
+            if(state_ >= 6)
             {
-                state_ -= 4;
-                QWidget::update();
+                update(state_-4);
             }
         }
         else
         {
             if(state_ < 6)
             {
-                state_ += 4;
-                QWidget::update();
+                update(state_+4);
             }
         }
     }
