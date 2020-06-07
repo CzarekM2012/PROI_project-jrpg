@@ -5,12 +5,9 @@
 MainWindow::MainWindow():QMainWindow()
 {
     setGeometry(QGuiApplication::primaryScreen()->geometry());
-    //MainMenu *menu = new MainMenu(this);
-    //switch_frames(menu);
-    //battle();
-    map(0, 27);
-    //dialog(3);
-
+    MainMenu *menu = new MainMenu(this);
+    switch_frames(menu);
+    connect(menu, SIGNAL (change_map(int, int)), this, SLOT (map(int, int)));
 }
 
 void MainWindow::switch_frames(switchable_frame *new_frame)
