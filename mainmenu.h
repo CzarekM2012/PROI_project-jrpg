@@ -15,7 +15,8 @@ class MainMenu: public switchable_frame
         void start_new_game();
         void load_game();
         void options();
-
+    signals:
+        void change_map(int, int);
     private:
         QPushButton *new_game_, *load_game_, *options_, *exit_;
 };
