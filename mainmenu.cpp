@@ -1,12 +1,18 @@
 #include "mainmenu.h"
 #include "battleinterface.h"
+#include "mainwindow.h"
 
 MainMenu::MainMenu(QObject *parent):switchable_frame()
 {
-    new_game_ = new QPushButton("New Game");
-    load_game_ = new QPushButton("Load Game");
-    options_ = new QPushButton("Options");
-    exit_ = new QPushButton("Exit");
+    new_game_ = new QPushButton("Nowa Gra");
+    load_game_ = new QPushButton("Wczytaj Grę");
+    options_ = new QPushButton("Ustawienia");
+    exit_ = new QPushButton("Wyjście");
+    QFont font ("Courier", 14);
+    new_game_->setFont(font);
+    load_game_->setFont(font);
+    options_->setFont(font);
+    exit_->setFont(font);
     QSize button_size = this->geometry().size();
     button_size.setWidth(button_size.width()/3);
     button_size.setHeight(button_size.height()/4);
@@ -27,7 +33,7 @@ MainMenu::MainMenu(QObject *parent):switchable_frame()
 
 void MainMenu::connect_buttons(QObject *parent)
 {
-    connect(new_game_, SIGNAL(clicked()), parent, SLOT(battle()));
+    connect(new_game_, SIGNAL(clicked()), this, SLOT(start_new_game()));
     connect(load_game_, SIGNAL(clicked()), this, SLOT(load_game()));
     connect(options_, SIGNAL(clicked()), this, SLOT(options()));
     connect(exit_, SIGNAL(clicked()), parent, SLOT(close()));
@@ -38,7 +44,7 @@ void MainMenu::connect_buttons(QObject *parent)
 
 void MainMenu::start_new_game()//initiate random fight at the moment
 {
-
+  emit change_map(0, 27);
 }
 
 void MainMenu::load_game()
