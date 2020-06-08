@@ -1,0 +1,5 @@
+Oskar 0 0 0 0 0 0 0 0 0 bicie inne_bicie wybuch empty empty empty empty empty czapeczka bluza dresy adidaski rekawiczki siekiera patyk Nasz_ulubiony_bohater_Oskar.
+
+name,    stats,   skills,     gear_array,     description
+QString  int[9]   skill*[8]   equipment*[7]   QString
+int stats_[9]={}; //max_hp, current_hp, max_sp, current_sp, atk, def, s_atk, s_def, initiative
