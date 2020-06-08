@@ -1,0 +1,10 @@
+Szybki_cios Bardzo_szybki_cios 1 3 1 0 0
+
+name,     description="", type,   base stat,   affected stat,  power, cost
+QString   QString         short   short   short      int    int
+//single_target_attack 1
+, aoe_attack 2, 
+single_target_self-targettable_support 5
+, single_target_non-self-targettable_support 6
+, aoe_support 7
+, single_target_revive 8
