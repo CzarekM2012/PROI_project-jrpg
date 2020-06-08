@@ -1,0 +1,97 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/main_menu-button_graphic.png</file>
+        <file>images/main_menu-background_graphic.png</file>
+        <file>images/Oskar.png</file>
+        <file>images/Sara.png</file>
+        <file>images/Tina.png</file>
+        <file>images/Jacek.png</file>
+        <file>images/Lena.png</file>
+        <file>images/Alek.png</file>
+        <file>images/Oskar-dead.png</file>
+        <file>images/Sara-dead.png</file>
+        <file>images/Tina-dead.png</file>
+        <file>images/Jacek-dead.png</file>
+        <file>images/Lena-dead.png</file>
+        <file>images/Alek-dead.png</file>
+        <file>images/Oskar-face.png</file>
+        <file>images/Sara-face.png</file>
+        <file>images/Tina-face.png</file>
+        <file>images/Jacek-face.png</file>
+        <file>images/Lena-face.png</file>
+        <file>images/Alek-face.png</file>
+        <file>images/Zielony slime.png</file>
+	<file>images/Zielony slime-dead.png</file>
+	<file>images/Duch.png</file>
+	<file>images/Duch-dead.png</file>
+	<file>images/Rycerz.png</file>
+	<file>images/Rycerz-dead.png</file>
+	<file>images/Mimik.png</file>
+	<file>images/Mimik-dead.png</file>
+	<file>images/Mumia mroku.png</file>
+	<file>images/Mumia mroku-dead.png</file>
+	<file>images/Mumia jasności.png</file>
+	<file>images/Mumia jasności-dead.png</file>
+	<file>images/Fioletowy slime-dead.png</file>
+	<file>images/Czerwony slime-dead.png</file>
+	<file>images/Fioletowy slime.png</file>
+	<file>images/Czerwony slime.png</file>
+	<file>images/Skorpion.png</file>
+	<file>images/Skorpion-dead.png</file>
+	<file>images/Pająk.png</file>
+	<file>images/Pająk-dead.png</file>
+        <file>images/hoodie.png</file>
+        <file>images/stick.png</file>
+        <file>images/sword.png</file>
+        <file>images/attack_icon.png</file>
+        <file>images/defense_icon.png</file>
+        <file>images/health_icon.png</file>
+        <file>images/initiative_icon.png</file>
+        <file>images/skill_points_icon.png</file>
+        <file>images/special_attack_icon.png</file>
+        <file>images/special_defense_icon.png</file>
+        <file>images/first aid kit.png</file>
+        <file>images/text_bg.png</file>
+        <file>images/path.png</file>
+        <file>images/desert.png</file>
+        <file>images/lake1.png</file>
+        <file>images/living_room.png</file>
+        <file>images/mountains.png</file>
+        <file>images/ruins1.png</file>
+        <file>images/ruins2.png</file>
+        <file>images/castle.png</file>
+        <file>images/sand_forest.png</file>
+        <file>images/sand_forest1.png</file>
+        <file>images/face0.png</file>
+        <file>images/face1.png</file>
+        <file>images/face2.png</file>
+        <file>images/face3.png</file>
+        <file>images/face4.png</file>
+        <file>images/face5.png</file>
+        <file>images/face6.png</file>
+        <file>images/grass_bg.png</file>
+        <file>images/path_dirt_bg.png</file>
+        <file>images/trees_bg.png</file>
+        <file>images/stone_bg.png</file>
+        <file>images/water_corner_bg.png</file>
+        <file>images/water_edge_bg.png</file>
+        <file>images/water_edge_vert_bg.png</file>
+        <file>images/bush_bg.png</file>
+        <file>images/cactus_bg.png</file>
+        <file>images/oasis_bg.png</file>
+        <file>images/rock_bg.png</file>
+        <file>images/rock_hand_bg.png</file>
+        <file>images/rock_2hands_bg.png</file>
+        <file>images/sand1_bg.png</file>
+        <file>images/sand2_bg.png</file>
+        <file>images/house_bg.png</file>
+        <file>images/water_bg.png</file>
+        <file>images/rock_floor1_bg.png</file>
+        <file>images/rock_floor_bg.png</file>
+        <file>images/wall_left_end_bg.png</file>
+        <file>images/wall_bg.png</file>
+        <file>images/wall_right_end_bg.png</file>
+        <file>images/fountain_bg.png</file>
+        <file>images/chest_bg.png</file>
+    </qresource>
+</RCC>
