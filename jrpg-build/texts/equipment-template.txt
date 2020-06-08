@@ -1,0 +1,4 @@
+Adidaski 0 0 0 0 0 0 0 0 0 2 3 Bardzo_ładne_adidaski.
+
+name stats[9] id typeofeq description
+QString *int[9] short short QString
