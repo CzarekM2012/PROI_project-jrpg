@@ -1,0 +1,1 @@
+Czerwony_slime 20 20 1 1 1 1 1 1 1 empty empty empty empty empty empty empty empty Czerwona_kulka_szlamu.
