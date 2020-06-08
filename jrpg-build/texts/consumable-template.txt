@@ -1,0 +1,4 @@
+Bomba 0 0 0 0 0 0 0 0 0 2 1 1 Taka_bomba_co_robi_bum!
+
+name stats[9] id battle_item counter description
+QString *int[9] short bool int QString
