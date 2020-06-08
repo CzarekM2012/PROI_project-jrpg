@@ -7,7 +7,7 @@ battleinterface::battleinterface(party *travel_party, enemy_group enemy_group, Q
     create_children();
     place_children();
     connect_signals();
-    setStyleSheet(QString("battleinterface{border-image:url(:/images/") + background + QString(".png)}"));
+    setStyleSheet(QString("battleinterface{border-image:url(") + background + QString(")}"));
     queue_index_ = 0;
     action_timer_->start(100);
 }
