@@ -1,0 +1,4 @@
+Pani_Bożena 0 0 0 0 0 0 0 0 0 bicie_patelnia rzut_kompotem wrzask empty empty empty empty empty Miła_sąsiadka_pani_Bożena
+
+name,    stats,   skills,    description
+QString  int[9]   skill*[8]  QString
