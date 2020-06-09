@@ -20,26 +20,16 @@
         <file>images/Jacek-face.png</file>
         <file>images/Lena-face.png</file>
         <file>images/Alek-face.png</file>
-        <file>images/Zielony slime.png</file>
-	<file>images/Zielony slime-dead.png</file>
-	<file>images/Duch.png</file>
-	<file>images/Duch-dead.png</file>
-	<file>images/Rycerz.png</file>
-	<file>images/Rycerz-dead.png</file>
-	<file>images/Mimik.png</file>
-	<file>images/Mimik-dead.png</file>
-	<file>images/Mumia mroku.png</file>
-	<file>images/Mumia mroku-dead.png</file>
-	<file>images/Mumia jasności.png</file>
-	<file>images/Mumia jasności-dead.png</file>
-	<file>images/Fioletowy slime-dead.png</file>
-	<file>images/Czerwony slime-dead.png</file>
-	<file>images/Fioletowy slime.png</file>
-	<file>images/Czerwony slime.png</file>
-	<file>images/Skorpion.png</file>
-	<file>images/Skorpion-dead.png</file>
-	<file>images/Pająk.png</file>
-	<file>images/Pająk-dead.png</file>
+        <file>images/Duch.png</file>
+        <file>images/Duch-dead.png</file>
+        <file>images/Rycerz.png</file>
+        <file>images/Rycerz-dead.png</file>
+        <file>images/Mimik.png</file>
+        <file>images/Mimik-dead.png</file>
+        <file>images/Skorpion.png</file>
+        <file>images/Skorpion-dead.png</file>
+        <file>images/Pająk.png</file>
+        <file>images/Pająk-dead.png</file>
         <file>images/hoodie.png</file>
         <file>images/stick.png</file>
         <file>images/sword.png</file>
@@ -50,7 +40,6 @@
         <file>images/skill_points_icon.png</file>
         <file>images/special_attack_icon.png</file>
         <file>images/special_defense_icon.png</file>
-        <file>images/first aid kit.png</file>
         <file>images/text_bg.png</file>
         <file>images/path.png</file>
         <file>images/desert.png</file>
@@ -93,5 +82,17 @@
         <file>images/wall_right_end_bg.png</file>
         <file>images/fountain_bg.png</file>
         <file>images/chest_bg.png</file>
+        <file>images/Czerwony_slime.png</file>
+        <file>images/Czerwony_slime-dead.png</file>
+        <file>images/Fioletowy_slime.png</file>
+        <file>images/Fioletowy_slime-dead.png</file>
+        <file>images/first_aid_kit.png</file>
+        <file>images/Mumia_jasności.png</file>
+        <file>images/Mumia_jasności-dead.png</file>
+        <file>images/Mumia_mroku.png</file>
+        <file>images/Mumia_mroku-dead.png</file>
+        <file>images/Niebieski_slime.png</file>
+        <file>images/Zielony_slime.png</file>
+        <file>images/Zielony_slime-dead.png</file>
     </qresource>
 </RCC>
