@@ -14,5 +14,5 @@ Z tego powodu aby uruchomić projekt,
 trzeba najpierw pobrać Qt(wersja darmowa jest oficjalnie dostępna), otworzyć plik jrpg.pro
 używając Qt Creator i zbudować go. W tym samym folderze co folder zawierający plik projektu
 zostanie utworzony folder o nazwie build-jrpg-*, po przeniesieniu do niego plików
-tekstowych i folderu texts z folderu jrpg_build pobranego z repozytorium, gra będzie
+tekstowych i folderu texts z folderu jrpg-build pobranego z repozytorium, gra będzie
 działać.
