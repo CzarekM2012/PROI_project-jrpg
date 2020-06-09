@@ -58,7 +58,7 @@ skill *read_skill(std::string name, std::vector<skill*> *skills_vector)
       readfile >> parameters[i];
     readfile.close();
 
-    strname = remove_floors(strname);
+    //strname = remove_floors(strname);
     strdesc = remove_floors(strdesc);
     qname = QString::fromStdString(strname);
     qdescription = QString::fromStdString(strname);
@@ -125,7 +125,7 @@ pc read_pc(std::string name, std::vector<skill*> *skills_vector, std::vector<equ
     readfile >> strdesc;
     readfile.close();
 
-    strname = remove_floors(strname);
+    //strname = remove_floors(strname);
     strdesc = remove_floors(strdesc);
     qname = QString::fromStdString(strname);
     qdescription = QString::fromStdString(strname);
@@ -165,7 +165,7 @@ void read_npc(std::string name, std::vector<npc*> *enemies_vector, std::vector<s
   readfile >> strdesc;
   readfile.close();
 
-  strname = remove_floors(strname);
+  //strname = remove_floors(strname);
   strdesc = remove_floors(strdesc);
   qname = QString::fromStdString(strname);
   qdescription = QString::fromStdString(strname);
@@ -208,7 +208,7 @@ void read_consumable(std::string name, std::vector<consumable*> *consumables_vec
     readfile >> strdesc;
     readfile.close();
 
-    strname = remove_floors(strname);
+    //strname = remove_floors(strname);
     strdesc = remove_floors(strdesc);
     qname = QString::fromStdString(strname);
     qdescription = QString::fromStdString(strname);
@@ -249,7 +249,7 @@ equipment *read_equipment(std::string name, std::vector<equipment*> *equipment_v
     readfile >> strdesc;
     readfile.close();
 
-    strname = remove_floors(strname);
+    //strname = remove_floors(strname);
     strdesc = remove_floors(strdesc);
     qname = QString::fromStdString(strname);
     qdescription = QString::fromStdString(strname);
