@@ -33,6 +33,10 @@ private:
     void execute_move();
     void give_control_to_the_player(pc *pc);
     void npc_act(npc *npc);
+    bool npc_aoe_heal(npc *acting, int* acting_stats, std::pair<npc*, double>*);
+    bool npc_single_target_heal(npc *acting, int* acting_stats, std::pair<npc*, double>*);
+    bool npc_aoe_attack(npc *acting, int* acting_stats, std::pair<pc*, double>*);
+    void npc_single_target_attack(npc *acting, int* acting_stats, std::pair<pc*, double>*);
     void finalize_action();
     void restart_battle();
     void count_dead();
