@@ -179,7 +179,7 @@ bool battleinterface::npc_single_target_heal(npc *acting, int *stats, std::pair<
     npc *second_target=nullptr, *current_target = nullptr;
     for(int i=0; i<4; i++)
     {
-        if(targets[i].second<health_percentage)
+        if(targets[i].first->alive() && targets[i].second<health_percentage)
         {
             health_percentage = targets[i].second;
             second_target = current_target;
