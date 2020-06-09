@@ -61,8 +61,6 @@ void battleinterface::connect_signals()
     connect(confirm_, SIGNAL(clicked()), this, SLOT(take_control_from_the_player()));
     party_view_->prepare_status_panels_highlight(party_statuses_);
     enemy_group_view_->prepare_status_panels_highlight(enemy_group_statuses_);
-    /*party_view_->prepare_action_target_acquisition();
-    enemy_group_view_->prepare_action_target_acquisition();*/
     connect(action_timer_, SIGNAL(timeout()), this, SLOT(increase_actions()));
 }
 
@@ -122,222 +120,214 @@ void battleinterface::npc_act(npc *acting_npc)
     acting_npc->get_stats(acting_stats);
     bool skillset_type[4];
     acting_npc->get_skillset_type(skillset_type);
-    pc *pcs[2][2] = {{battle_party_.get_pc_address(0,0), battle_party_.get_pc_address(0,1)},
-                     {battle_party_.get_pc_address(1,0),battle_party_.get_pc_address(1,1)}};
-    npc *npcs[2][2] = {{enemy_group_.get_npc_adress(0, 0), enemy_group_.get_npc_adress(0, 1)},
-                       {enemy_group_.get_npc_adress(1, 0), enemy_group_.get_npc_adress(1, 1)}};
-    if(skillset_type[3])
-    {
-        int number_of_injured=0;
-        for (int r=0; r<2; r++)
-        {
-            for(int p=0; p<2; p++)
-            {
-                if(npcs[r][p]->valid() && npcs[r][p]->alive() && (double)npcs[r][p]->get_stat(1)/npcs[r][p]->get_stat(0)<0.5){number_of_injured++;}
-            }
-        }
-        if(number_of_injured >=2)
-        {
-            skill *current_skill=nullptr;
-            for(int i=0; i<8; i++)
-            {
-                skill *temp_skill = acting_npc->get_skill(i);
-                if(temp_skill!=nullptr && !(temp_skill->is_attack()) && temp_skill->aoe() && temp_skill->get_affected_stat()==1)
-                {
-                    if(current_skill==nullptr && temp_skill->get_sp_cost()<acting_stats[3]){current_skill = temp_skill;}
-                    else if(temp_skill->get_sp_cost()<acting_stats[3] && temp_skill->get_base_power() + acting_stats[temp_skill->get_base_stat()] > current_skill->get_base_power() + acting_stats[current_skill->get_base_stat()]){current_skill = temp_skill;}
-                }
-            }
-            if(current_skill !=nullptr)
-            {
-                entity *targets[4] = {npcs[0][0], npcs[0][1], npcs[1][0], npcs[1][1]};
-                action_->set_targets(targets);
-                action_->set_skill(current_skill);
-                finalize_action();
-                return;
-            }
-        }
-    }
-    if(skillset_type[2])
-    {
-        std::pair<npc*,double> potential_targets[4];
-        int index=0;
-        double health_percentage;
-        for(int r=0; r<2; r++)
-        {
-            for(int p=0; p<2; p++)
-            {
-                health_percentage = (double)npcs[r][p]->get_stat(1)/npcs[r][p]->get_stat(0);
-                if(npcs[r][p]->valid() && npcs[r][p]->alive() && health_percentage<0.3)
-                {
-                    potential_targets[index].first = npcs[r][p];
-                    potential_targets[index].second = health_percentage;
-                    index++;
-                }
-            }
-        }
-        health_percentage = 1;
-        npc *current_target = nullptr;
-        for(int i=index-1; i>=0; i--)
-        {
-            if(potential_targets[i].second<health_percentage)
-            {
-                current_target = potential_targets[i].first;
-                health_percentage = potential_targets[i].second;
-                if(current_target == acting_npc){potential_targets[i].second = 1;}
-            }
-        }
-        skill *current_skill = nullptr;
-        if(current_target == acting_npc)
-        {
-            for(int i=0; i<8; i++)
-            {
-                skill *temp_skill = acting_npc->get_skill(i);
-                if(temp_skill!=nullptr && !(temp_skill->is_attack()) && !(temp_skill->aoe()))
-                {
-                    if(current_skill == nullptr && temp_skill->get_sp_cost() <= acting_npc->get_stat(3) && temp_skill->is_self_targettable()){current_skill = temp_skill;}
-                    else if(temp_skill->get_sp_cost() <= acting_npc->get_stat(3) && temp_skill->is_self_targettable() && temp_skill->get_base_stat() + acting_stats[temp_skill->get_base_stat()] > current_skill->get_base_power() + acting_stats[current_skill->get_base_stat()]){current_skill = temp_skill;}
-                }
-            }
-            if(current_skill != nullptr)
-            {
-                action_->set_target(current_target);
-                action_->set_skill(current_skill);
-                finalize_action();
-                return;
-            }
-            else
-            {
-                health_percentage = 1;
-                for(int i=index-1; i>=0; i--)
-                {
-                    if(potential_targets[i].second<health_percentage)
-                    {
-                        current_target = potential_targets[i].first;
-                        health_percentage = potential_targets[i].second;
-                    }
-                }
-            }
-        }
-        for(int i=0; i<8; i++)
-        {
-            skill *temp_skill = acting_npc->get_skill(i);
-            if(temp_skill!=nullptr && temp_skill!=nullptr && !(temp_skill->is_attack()) && !(temp_skill->aoe()))
-            {
-                if(current_skill == nullptr && temp_skill->get_sp_cost() <= acting_npc->get_stat(3)){current_skill = temp_skill;}
-                else if(temp_skill->get_sp_cost() <= acting_npc->get_stat(3) && temp_skill->get_base_stat() + acting_stats[temp_skill->get_base_stat()] > current_skill->get_base_power() + acting_stats[current_skill->get_base_stat()]){current_skill = temp_skill;}
-            }
-        }
-        if(current_skill != nullptr)
-        {
-            action_->set_target(current_target);
-            action_->set_skill(current_skill);
-            finalize_action();
-            return;
-        }
-    }
-    if(skillset_type[1])
-    {
-        int number_of_targets = 0;
-        for(int r=0; r<2; r++)
-        {
-            for(int p=0; p<2; p++)
-            {
-                if(pcs[r][p]->valid() && pcs[r][p]->alive()){number_of_targets++;}
-            }
-        }
-        if(number_of_targets >=2)
-        {
-            skill *current_skill = nullptr;
-            for(int i=0; i<8; i++)
-            {
-                skill *temp_skill = acting_npc->get_skill(i);
-                if(temp_skill!=nullptr && temp_skill->is_attack() && temp_skill->aoe())
-                {
-                    if(current_skill == nullptr && temp_skill->get_sp_cost() <= acting_npc->get_stat(3)){current_skill = temp_skill;}
-                    else if(temp_skill->get_sp_cost() <= acting_npc->get_stat(3) && temp_skill->get_base_power() + acting_stats[temp_skill->get_base_stat()] > current_skill->get_base_power() + acting_stats[current_skill->get_base_stat()]){current_skill = temp_skill;}
-                }
-            }
-            if(current_skill != nullptr)
-            {
-                entity *targets[4] = {pcs[0][0], pcs[0][1], pcs[1][0], pcs[1][1]};
-                action_->set_targets(targets);
-                action_->set_skill(current_skill);
-                finalize_action();
-                return;
-            }
-        }
-    }
-    if(skillset_type[0])
-    {
-        std::pair<pc*,double> potential_targets[4];
-        int index=0;
-        for(int r=0; r<2; r++)
-        {
-            for(int p=0; p<2; p++)
-            {
-                if(pcs[r][p]->valid() && pcs[r][p]->alive())
-                {
-                    potential_targets[index].first = pcs[r][p];
-                    potential_targets[index].second = (double)pcs[r][p]->get_stat(1)/pcs[r][p]->get_stat(0);
-                    index++;
-                }
-            }
-        }
-        pc *current_target = potential_targets[index-1].first;
-        double health_percentage = potential_targets[index-1].second;
-        for(int i=index-2; i>=0; i--)
-        {
-            if(potential_targets[i].second < health_percentage)
-            {
-                health_percentage = potential_targets[i].second;
-                current_target = potential_targets[i].first;
-            }
-        }
-        skill *current_skill = nullptr;
-        for(int i=0; i<8; i++)
-        {
-            skill *temp_skill = acting_npc->get_skill(i);
-            if(temp_skill!=nullptr && temp_skill->is_attack() && !(temp_skill->aoe()))
-            {
-                if(current_skill == nullptr && temp_skill->get_sp_cost() <= acting_npc->get_stat(3)){current_skill = temp_skill;}
-                else if(temp_skill->get_sp_cost() <= acting_npc->get_stat(3) && temp_skill->get_base_power() + acting_stats[temp_skill->get_base_stat()] > current_skill->get_base_power() + acting_stats[current_skill->get_base_stat()]){current_skill = temp_skill;}
-            }
-        }
-        current_skill = current_skill == nullptr ? normal_attack_ : current_skill;
-        action_->set_target(current_target);
-        action_->set_skill(current_skill);
-        finalize_action();
-        return;
-    }
-    std::pair<pc*,double> potential_targets[4];
-    int index=0;
+    std::pair<pc*, double> pcs[4];
+    std::pair<npc*, double> npcs[4];
     for(int r=0; r<2; r++)
     {
         for(int p=0; p<2; p++)
         {
-            if(pcs[r][p]->valid() && pcs[r][p]->alive())
+            int index = 2*p + r;
+            pc *temp_pc = battle_party_.get_pc_address(r,p);
+            pcs[index].first = temp_pc;
+            pcs[index].second = temp_pc->valid() ? (double)temp_pc->get_stat(1)/temp_pc->get_stat(0) : 2;
+            npc *temp_npc = enemy_group_.get_npc_adress(r, p);
+            npcs[index].first = temp_npc;
+            npcs[index].second = temp_npc->valid() ? (double)temp_npc->get_stat(1)/temp_npc->get_stat(0) : 2;
+        }
+    }
+    if(skillset_type[3] && npc_aoe_heal(acting_npc, acting_stats, npcs)){return;}
+    if(skillset_type[2] && npc_single_target_heal(acting_npc, acting_stats, npcs)){return;}
+    if(skillset_type[1] && npc_aoe_attack(acting_npc, acting_stats, pcs)){return;}
+    npc_single_target_attack(acting_npc, acting_stats, pcs);
+}
+
+bool battleinterface::npc_aoe_heal(npc *acting, int *stats, std::pair<npc*, double>*targets)
+{
+    int number_of_injured=0;
+    for(int i=0; i<4; i++)
+    {
+        if(targets[i].second){number_of_injured++;}
+    }
+    if(number_of_injured >=2)
+    {
+        skill *current_skill=nullptr;
+        for(int i=0; i<8; i++)
+        {
+            skill *temp_skill = acting->get_skill(i);
+            if(temp_skill!=nullptr && !(temp_skill->is_attack()) && temp_skill->aoe() && temp_skill->get_affected_stat()==1 && temp_skill->get_sp_cost() < stats[3])
             {
-                potential_targets[index].first = pcs[r][p];
-                potential_targets[index].second = (double)pcs[r][p]->get_stat(1)/pcs[r][p]->get_stat(0);
-                index++;
+                if(current_skill==nullptr){current_skill = temp_skill;}
+                else if(temp_skill->get_base_power() + stats[temp_skill->get_base_stat()] >
+                        current_skill->get_base_power() + stats[current_skill->get_base_stat()])
+                    {current_skill = temp_skill;}
+            }
+        }
+        if(current_skill !=nullptr)
+        {
+            entity *skill_targets[4] = {targets[0].first, targets[1].first, targets[2].first, targets[3].first,};
+            action_->set_targets(skill_targets);
+            action_->set_skill(current_skill);
+            finalize_action();
+            return true;
+        }
+    }
+    return false;
+}
+bool battleinterface::npc_single_target_heal(npc *acting, int *stats, std::pair<npc*, double>*targets)
+{
+    double health_percentage = 0.3;
+    npc *second_target=nullptr, *current_target = nullptr;
+    for(int i=0; i<4; i++)
+    {
+        if(targets[i].second<health_percentage)
+        {
+            health_percentage = targets[i].second;
+            second_target = current_target;
+            current_target = targets[i].first;
+        }
+    }
+    skill *self_targettable=nullptr, *not_self_targettable=nullptr;
+    for(int i=0; i<8; i++)
+    {
+        skill *temp_skill = acting->get_skill(i);
+        if(temp_skill!=nullptr && !(temp_skill->is_attack()) && !(temp_skill->aoe()) && temp_skill->get_sp_cost() <= stats[3])
+        {
+            if(temp_skill->is_self_targettable())
+            {
+                if(self_targettable == nullptr){self_targettable = temp_skill;}
+                else if(temp_skill->get_base_power() + stats[temp_skill->get_base_stat()] >
+                        self_targettable->get_base_power() + stats[self_targettable->get_base_stat()])
+                    {self_targettable = temp_skill;}
+            }
+            else
+            {
+                if(not_self_targettable == nullptr){not_self_targettable = temp_skill;}
+                else if(temp_skill->get_base_power() + stats[temp_skill->get_base_stat()] >
+                        not_self_targettable->get_base_power() + stats[not_self_targettable->get_base_stat()])
+                    {not_self_targettable = temp_skill;}
             }
         }
     }
-    pc *current_target = potential_targets[index-1].first;
-    double health_percentage = potential_targets[index-1].second;
-    for(int i=index-2; i>=0; i--)
+    if((self_targettable != nullptr || not_self_targettable != nullptr) && current_target != nullptr)
     {
-        if(potential_targets[i].second < health_percentage)
+        if(current_target == acting && second_target == nullptr && self_targettable == nullptr){return false;}
+        if(self_targettable != nullptr)
         {
-            health_percentage = potential_targets[i].second;
-            current_target = potential_targets[i].first;
+            if(not_self_targettable != nullptr)
+            {
+                if(current_target == acting)
+                {
+                    if(second_target != nullptr)
+                    {
+                        if(self_targettable->get_base_power() + stats[self_targettable->get_base_stat()] >
+                            not_self_targettable->get_base_power() + stats[not_self_targettable->get_base_stat()])
+                        {
+                            action_->set_skill(self_targettable);
+                            action_->set_target(current_target);
+                        }
+                        else
+                        {
+                            action_->set_skill(not_self_targettable);
+                            action_->set_target(second_target);
+                        }
+                    }
+                    else
+                    {
+                        action_->set_skill(self_targettable);
+                        action_->set_target(current_target);
+                    }
+                }
+                else
+                {
+                    action_->set_target(current_target);
+                    skill *more_powerful =
+                            self_targettable->get_base_power() + stats[self_targettable->get_base_stat()] >
+                                not_self_targettable->get_base_power() + stats[not_self_targettable->get_base_stat()]
+                                    ? self_targettable : not_self_targettable;
+                    action_->set_skill(more_powerful);
+                }
+            }
+            else
+            {
+                action_->set_skill(self_targettable);
+                action_->set_target(current_target);
+            }
+        }
+        else
+        {
+            action_->set_skill(not_self_targettable);
+            if(current_target == acting)
+            {
+                if(second_target != nullptr){action_->set_target(second_target);}
+                else{return false;}
+            }
+            else{action_->set_target(current_target);}
+        }
+        finalize_action();
+        return true;
+    }
+    return false;
+}
+bool battleinterface::npc_aoe_attack(npc *acting, int *stats, std::pair<pc*, double>*targets)
+{
+    int number_of_targets = 0;
+    for(int i=0; i<4; i++)
+    {
+        if(targets[i].first->alive()){number_of_targets++;}
+    }
+    if(number_of_targets >=2)
+    {
+        skill *current_skill = nullptr;
+        for(int i=0; i<8; i++)
+        {
+            skill *temp_skill = acting->get_skill(i);
+            if(temp_skill!=nullptr && temp_skill->is_attack() && temp_skill->aoe() && temp_skill->get_sp_cost() <= stats[3])
+            {
+                if(current_skill == nullptr){current_skill = temp_skill;}
+                else if(temp_skill->get_base_power() + stats[temp_skill->get_base_stat()] >
+                        current_skill->get_base_power() + stats[current_skill->get_base_stat()])
+                    {current_skill = temp_skill;}
+            }
+        }
+        if(current_skill != nullptr)
+        {
+            entity *skill_targets[4] = {targets[0].first, targets[1].first, targets[2].first, targets[3].first,};
+            action_->set_targets(skill_targets);
+            action_->set_skill(current_skill);
+            finalize_action();
+            return true;
         }
     }
+    return false;
+}
+void battleinterface::npc_single_target_attack(npc *acting, int *stats, std::pair<pc*, double>*targets)
+{
+    double health_percentage = 1.5;
+    pc *current_target;
+    for(int i=0; i<4; i++)
+    {
+        if(targets[i].first->alive() && targets[i].second<health_percentage)
+        {
+            health_percentage = targets[i].second;
+            current_target = targets[i].first;
+        }
+    }
+    skill *current_skill = nullptr;
+    for(int i=0; i<8; i++)
+    {
+        skill *temp_skill = acting->get_skill(i);
+        if(temp_skill!=nullptr && temp_skill->is_attack() && !(temp_skill->aoe()) && temp_skill->get_sp_cost() <= stats[3])
+        {
+            if(current_skill == nullptr){current_skill = temp_skill;}
+            else if(temp_skill->get_base_power() + stats[temp_skill->get_base_stat()] >
+                    current_skill->get_base_power() + stats[current_skill->get_base_stat()])
+                {current_skill = temp_skill;}
+        }
+    }
+    current_skill = current_skill == nullptr ? normal_attack_ : current_skill;
     action_->set_target(current_target);
-    action_->set_skill(normal_attack_);
+    action_->set_skill(current_skill);
     finalize_action();
-    return;
 }
 
 void battleinterface::finalize_action()
@@ -587,7 +577,7 @@ void battleinterface::initiate_action()
         connect(change, &change_position_panel::switch_places, this, [this](std::pair<int,int> pos1, std::pair<int,int> pos2)
         {
             battle_party_.swap_members(pos1, pos2);
-            if(pos2.first!=3){party_statuses_->swap(pos1, pos2);}
+            if(pos2.first!=2){party_statuses_->swap(pos1, pos2);}
             else{party_statuses_->reset_action(pos1);}
             party_view_->get_character_frame(pos1.first, pos1.second)->update(1);
             end_turn();
